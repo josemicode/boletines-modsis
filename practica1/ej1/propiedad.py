@@ -1,11 +1,15 @@
+from datetime import datetime
 from typing import List
-
 
 class Propiedad:
     def __init__(self, identificador, coste_noche):
         self.id = identificador
         self.coste_noche = coste_noche
         self.reservada = False
+    
+    def precio(self):
+        pass
+
     #? Handling de fechas...
     #? Opcion 1: crear un objeto separado (Si el profesor lo requiere)
     #? Opcion 2: utilizar la libreria datetime
