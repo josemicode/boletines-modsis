@@ -2,7 +2,8 @@ from typing import List
 
 
 class Propiedad:
-    def __init__(self, coste_noche):
+    def __init__(self, identificador, coste_noche):
+        self.id = identificador
         self.coste_noche = coste_noche
         self.reservada = False
     #? Handling de fechas...
