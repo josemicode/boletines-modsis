@@ -7,8 +7,9 @@ class Usuario:
     def registrarPropiedad(self, coste_noche):
         Sistema().registrar(self, coste_noche)
 
-    def alquilarPropiedad(self, propiedad):
-        Sistema().alquilar(self, propiedad)
-
-#* Asumimos la capacidad de multipropiedades
-#! Clase Sistema que adminisstre entidades y les de formato de antemano
+    def alquilarPropiedad(self, propiedad, fecha_inicio, fecha_fin):
+        Sistema().alquilar(self, propiedad, fecha_inicio, fecha_fin)
+    
+    def asignarRegla(self, nueva_regla, propiedad):
+        #if propiedad in self.propiedades:
+        Sistema().introducirRegla(nueva_regla, propiedad)
