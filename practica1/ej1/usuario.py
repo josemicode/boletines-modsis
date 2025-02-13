@@ -14,3 +14,5 @@ class Usuario:
         pass
 
 #* Asumimos la capacidad de multipropiedades
+#! Eliminar ids
+#! Clase Sistema que adminisstre entidades y les de formato de antemano

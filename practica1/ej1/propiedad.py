@@ -25,6 +25,3 @@ class Propiedad:
 
     #? Handling de fechas...
     #* Finalmente, se esperaran objetos datetime como parametros; formatear en el main
-
-    #? Otra pregunta de formato... hay que decidir si preferimos tipado fuerte o debil en la definicion
-    #* Supongo que utilizaremos el debil, por simpleza en gran medida
