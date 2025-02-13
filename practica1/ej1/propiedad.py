@@ -1,6 +1,5 @@
 from datetime import datetime
-from typing import List
-
+import reglas
 class Propiedad:
     def __init__(self, identificador, coste_noche):
         self.id = identificador
