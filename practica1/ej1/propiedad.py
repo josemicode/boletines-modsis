@@ -1,8 +1,7 @@
 from datetime import datetime
 #import reglas
 class Propiedad:
-    def __init__(self, identificador, coste_noche):
-        self.id = identificador
+    def __init__(self, coste_noche):
         self.coste_noche = coste_noche
         self.reglas = []
         #TODO: self.reservas = []
