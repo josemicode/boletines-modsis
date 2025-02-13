@@ -1,15 +1,14 @@
 from propiedad import Propiedad
+from sistema import Sistema
 class Usuario:
     def __init__(self):
         self.propiedades = []
     
     def registrarPropiedad(self, coste_noche):
-        nueva_propiedad = Propiedad(coste_noche)
-        self.propiedades.append(nueva_propiedad)
-        pass
+        Sistema().registrar(self, coste_noche)
 
-    def alquilarPropiedad(self):
-        pass
+    def alquilarPropiedad(self, propiedad):
+        Sistema().alquilar(self, propiedad)
 
 #* Asumimos la capacidad de multipropiedades
 #! Clase Sistema que adminisstre entidades y les de formato de antemano

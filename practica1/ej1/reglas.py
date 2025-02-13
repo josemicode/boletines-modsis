@@ -42,9 +42,9 @@ class ReglaRango(Regla):
         #! Dependiendo de como se calcule (diferencia entre un dia y el mismo = 1 // 0)
         return (mayor - menor).days
 
-    def aplicar(self, reserva_inicio, reserva_fin):
-        dias = self.diasCompartidos()
-        return dias * self.factor
+    def aplicar(self, reserva_inicio, reserva_fin, precio):
+        dias = self.diasCompartidos(reserva_inicio, reserva_fin)
+        return dias * precio * self.factor
 
 class ReglaProlongacion(Regla):
     def __init__(self, factor, dias_bonus):
@@ -56,9 +56,14 @@ class ReglaProlongacion(Regla):
     def prioridad(self):
         return self.prioridad
     
-    def aplicar(self, reserva_inicio, reserva_fin):
+    def aplicar(self, reserva_inicio, reserva_fin, precio):
         dias = (reserva_fin - reserva_inicio).days
         if dias < self.dias_bonus:
             return 0
         
-        return dias * self.factor
+        return dias * precio * self.factor
+    
+    '''
+    2x + 2xp -> x + p, 3x + xp -> x(3 + p)
+    4x - 2p  -> 2x - p, 4x + p
+    '''

@@ -13,7 +13,7 @@ class Propiedad:
     def precio(self, fecha_inicio, fecha_fin):
         precio = (fecha_fin - fecha_inicio).days * self.coste_noche
         for regla in self.reglas:
-            precio += regla.aplicar()
+            precio += regla.aplicar(fecha_inicio, fecha_fin, precio)
         return precio
     
     #TODO: handling de reservas
