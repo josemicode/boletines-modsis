@@ -12,7 +12,7 @@ class Usuario:
     
     def asignarRegla(self, nueva_regla, propiedad):
         #if propiedad in self.propiedades:
-        Sistema().introducirRegla(nueva_regla, propiedad)
+        return Sistema().introducirRegla(nueva_regla, propiedad)
 '''
     def listarPropiedades(self):
         for propiedad in self.propiedades:

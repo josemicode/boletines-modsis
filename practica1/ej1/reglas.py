@@ -18,19 +18,19 @@ class Regla(ABC):
         pass
 
     @abstractmethod
-    def aplicar(self, reserva_inicio, reserva_fin):
+    def aplicar(self, reserva_inicio, reserva_fin, precio_noche, precio_total):
         pass
 
 class ReglaRango(Regla):
     def __init__(self, factor, fecha_inicio, fecha_fin):
-        super.__init__(factor)
+        super().__init__(factor)
         self.inicio = fecha_inicio
         self.fin = fecha_fin
-        self.prioridad = 1
-
+        self._prioridad = 1
+    
     @property
     def prioridad(self):
-        return self.prioridad
+        return self._prioridad
     
     def diasCompartidos(self, entrada, salida):
         menor = max(entrada, self.inicio)
@@ -42,26 +42,26 @@ class ReglaRango(Regla):
         #! Dependiendo de como se calcule (diferencia entre un dia y el mismo = 1 // 0)
         return (mayor - menor).days
 
-    def aplicar(self, reserva_inicio, reserva_fin, precio):
+    def aplicar(self, reserva_inicio, reserva_fin, precio_noche, precio_total):
         dias = self.diasCompartidos(reserva_inicio, reserva_fin)
-        return dias * precio * self.factor
+        return precio_total + (dias * precio_noche * self.factor)
 
 class ReglaProlongacion(Regla):
     def __init__(self, factor, dias_bonus):
-        super.__init__(factor)
+        super().__init__(factor)
         self.dias_bonus = dias_bonus
-        self.prioridad = 2
+        self._prioridad = 2
 
     @property
     def prioridad(self):
-        return self.prioridad
+        return self._prioridad
     
-    def aplicar(self, reserva_inicio, reserva_fin, precio):
+    def aplicar(self, reserva_inicio, reserva_fin, precio_noche, precio_total):
         dias = (reserva_fin - reserva_inicio).days
         if dias < self.dias_bonus:
             return 0
         
-        return dias * precio * self.factor
+        return precio_total + (precio_total * self.factor)
     
     '''
     2x + 2xp -> x + p, 3x + xp -> x(3 + p)

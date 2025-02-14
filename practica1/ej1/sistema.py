@@ -42,9 +42,9 @@ class Sistema:
 
     def introducirRegla(self, nueva_regla, propiedad):
         if nueva_regla.prioridad == 1:
-            aplicable = self.existeReglaRango(nueva_regla, propiedad)
+            aplicable = self.noExisteReglaRango(nueva_regla, propiedad)
         elif nueva_regla.prioridad == 2:
-            aplicable = self.existeReglaProlongacion(propiedad)
+            aplicable = self.noExisteReglaProlongacion(propiedad)
 
         if aplicable:
             propiedad.nuevaRegla(nueva_regla)
