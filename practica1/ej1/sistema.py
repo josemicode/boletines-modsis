@@ -16,6 +16,7 @@ class Sistema:
                 return False
         return True
     
+    #? Alquilar podria asociar el usuario a la reserva tambien
     def alquilar(self, propiedad, fecha_inicio, fecha_fin):
         if self.reservaViable(propiedad, fecha_inicio, fecha_fin):
             precio = propiedad.calcularPrecio(fecha_inicio, fecha_fin)

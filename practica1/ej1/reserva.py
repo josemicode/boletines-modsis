@@ -3,3 +3,12 @@ class Reserva:
         self.inicio = fecha_inicio
         self.fin = fecha_fin
         self.precio = precio
+    
+    def getFechaInicio(self):
+        return self.inicio
+    
+    def getFechaFin(self):
+        return self.fin
+    
+    def getPrecio(self):
+        return self.precio
