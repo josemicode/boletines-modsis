@@ -20,7 +20,12 @@ del mismo.
 '''
 
 def main():
-    pass
+    #words = ["aa", "bb", "cc", "dd"]
+    path = "aa/bb/cc/dd" #! No poner /aa/bb...
+    words = path.split("/")
+    print(words)
+    final = "/".join(words[1:])
+    print(final)
 
 '''
 - Controlar que dado un usuario y un archivo, el usuario pueda acceder al archivo.
@@ -29,4 +34,4 @@ def main():
 '''
 
 if __name__ == "__main__":
-    pass
+    main()
