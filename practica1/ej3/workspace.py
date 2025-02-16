@@ -38,7 +38,11 @@ def main():
     b3 = u1.crearDirectorio("rpg", "games")
     print("Creado? ", b3)
     b4 = u1.crearDirectorio("rpg", "games")
-    print("Creado? ", b4, "\n")
+    print("Creado? ", b4)
+    b5 = u1.crearDirectorio("multiplayer", "games/rpg")
+    #b5 = u1.crearDirectorio("a", "games/rpg/multiplayerr")
+    print("Creado? ", b5, "\n")
+
     #print(u1.directorios[0].directorios[1].getNombre())
     #print(u1.directorios)
 
@@ -52,7 +56,7 @@ if __name__ == "__main__":
     main()
 
 #? TODO:
-#* Testear creacion de directorios      []
+#* Testear creacion de directorios      [x]
 #* Implementar creacion de archivos     []
 #* Testear creacion de archivos         []
 

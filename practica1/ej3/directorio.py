@@ -17,8 +17,10 @@ class Directorio:
     def crearDirectorio(self, nombre, ruta):
         separados = ruta.split("/")
         if len(separados) == 1:
-            self.directorios.append(Directorio(nombre))
-            return True
+            if self.tieneDirectorio(nombre).getNombre() == "":
+                self.directorios.append(Directorio(nombre))
+                return True
+            return False
         
         dir = self.tieneDirectorio(separados[1])
         if dir.getNombre() == "":
@@ -26,5 +28,3 @@ class Directorio:
         
         nueva_ruta = "/".join(separados[1:])
         return dir.crearDirectorio(nombre, nueva_ruta)
-    
-    #! Asumo que funciona :)
