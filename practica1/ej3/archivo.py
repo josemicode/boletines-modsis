@@ -4,3 +4,15 @@ class Archivo:
         self.fecha_creacion = fecha_creacion
         self.fecha_modificacion = fecha_creacion
         self.tamano = 0
+    
+    def getNombre(self):
+        return self.nombre
+    
+    def getFechaCreacion(self):
+        return self.fecha_creacion
+    
+    def getFechaModificacion(self):
+        return self.fecha_modificacion
+    
+    def getTamano(self):
+        return self.tamano

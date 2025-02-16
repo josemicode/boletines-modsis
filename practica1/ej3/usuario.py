@@ -7,9 +7,9 @@ class Usuario:
         self.password = password
         self.directorios = []
 
-    def getPrimerDirectorio(self, ruta):
-        separados = ruta.split("/")
-        return separados[0]
+    # def getPrimerDirectorio(self, ruta):
+    #     separados = ruta.split("/")
+    #     return separados[0]
 
     def existeDirectorio(self, nombre):
         for dir in self.directorios:
@@ -18,7 +18,8 @@ class Usuario:
         return Directorio("")
 
     def directorioValido(self, ruta):
-        primero = self.getPrimerDirectorio(ruta)
+        separados = ruta.split("/")
+        primero = separados[0]
         return self.existeDirectorio(primero)
     
     def crearDirectorio(self, nombre, ruta):
@@ -32,6 +33,12 @@ class Usuario:
         if dir.getNombre() == "":
             return False
         return dir.crearDirectorio(nombre, ruta)
+    
+    def crearArchivo(self, nombre, fecha_creacion, ruta):
+        dir = self.directorioValido(ruta)
+        if dir.getNombre() == "":
+            return False
+        return dir.crearArchivo(nombre, fecha_creacion, ruta)
 
     def getNumArchivos(self):
         pass
