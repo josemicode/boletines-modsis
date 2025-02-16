@@ -11,22 +11,26 @@ class Usuario:
         separados = ruta.split("/")
         return separados[0]
 
-    def directorioValido(self, ruta):
-        primero = self.getPrimerDirectorio(ruta)
+    def existeDirectorio(self, nombre):
         for dir in self.directorios:
-            if primero == dir.getNombre():
+            if nombre == dir.getNombre():
                 return dir
         return Directorio("")
+
+    def directorioValido(self, ruta):
+        primero = self.getPrimerDirectorio(ruta)
+        return self.existeDirectorio(primero)
     
     def crearDirectorio(self, nombre, ruta):
         if ruta == "":
-            self.directorios.append(Directorio(nombre))
-            return True
+            if self.existeDirectorio(nombre).getNombre() == "":
+                self.directorios.append(Directorio(nombre))
+                return True
+            return False
         
         dir = self.directorioValido(ruta)
         if dir.getNombre() == "":
             return False
-        
         return dir.crearDirectorio(nombre, ruta)
 
     def getNumArchivos(self):

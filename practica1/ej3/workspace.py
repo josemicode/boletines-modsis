@@ -1,3 +1,5 @@
+from usuario import Usuario
+
 '''
 - Se desea desarrollar una aplicación para compartir archivos entre usuarios
 de una aplicación. De los usuarios se sabe su nombre, email y password. Los
@@ -19,13 +21,26 @@ compartido, entonces no puede ser accedido mas que por el propietario
 del mismo.
 '''
 
-def main():
+def splittest():
     #words = ["aa", "bb", "cc", "dd"]
     path = "aa/bb/cc/dd" #! No poner /aa/bb...
     words = path.split("/")
     print(words)
     final = "/".join(words[1:])
     print(final)
+
+def main():
+    u1 = Usuario("Jose", "jose@gmail.com", "123123")
+    b1 = u1.crearDirectorio("games", "")
+    print("Creado? ", b1)
+    b2 = u1.crearDirectorio("games", "")
+    print("Creado? ", b2)
+    b3 = u1.crearDirectorio("rpg", "games")
+    print("Creado? ", b3)
+    b4 = u1.crearDirectorio("rpg", "games")
+    print("Creado? ", b4, "\n")
+    #print(u1.directorios[0].directorios[1].getNombre())
+    #print(u1.directorios)
 
 '''
 - Controlar que dado un usuario y un archivo, el usuario pueda acceder al archivo.
@@ -35,3 +50,12 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+#? TODO:
+#* Testear creacion de directorios      []
+#* Implementar creacion de archivos     []
+#* Testear creacion de archivos         []
+
+#! TODO:
+#* Funcion cantidad de archivos         []
+#* Funcion espacio total ocupado        []
