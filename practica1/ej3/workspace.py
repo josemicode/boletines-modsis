@@ -1,4 +1,5 @@
 from usuario import Usuario
+from datetime import date
 
 '''
 - Se desea desarrollar una aplicación para compartir archivos entre usuarios
@@ -30,6 +31,7 @@ def splittest():
     print(final)
 
 def main():
+    #* Directorios
     u1 = Usuario("Jose", "jose@gmail.com", "123123")
     b1 = u1.crearDirectorio("games", "")
     print("Creado? ", b1)
@@ -42,9 +44,17 @@ def main():
     b5 = u1.crearDirectorio("multiplayer", "games/rpg")
     #b5 = u1.crearDirectorio("a", "games/rpg/multiplayerr")
     print("Creado? ", b5, "\n")
-
     #print(u1.directorios[0].directorios[1].getNombre())
     #print(u1.directorios)
+    #* Archivos
+    fecha = date(2025, 1, 1)
+    b6 = u1.crearArchivo("buscaminas", fecha, "games")
+    print("Nuevo archivo? ", b6)
+    b7 = u1.crearArchivo("diablo iv", fecha, "games/rpg")
+    print("Nuevo archivo? ", b7)
+    b8 = u1.crearArchivo("terraria", fecha, "games/rpg/multiplayer")
+    print("Nuevo archivo? ", b8)
+    print("\n")
 
 '''
 - Controlar que dado un usuario y un archivo, el usuario pueda acceder al archivo.
@@ -57,8 +67,8 @@ if __name__ == "__main__":
 
 #? TODO:
 #* Testear creacion de directorios      [x]
-#* Implementar creacion de archivos     []
-#* Testear creacion de archivos         []
+#* Implementar creacion de archivos     [x]
+#* Testear creacion de archivos         [x]
 
 #! TODO:
 #* Funcion cantidad de archivos         []
