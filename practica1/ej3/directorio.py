@@ -35,13 +35,13 @@ class Directorio:
         for ar in self.archivos:
             if nombre == ar.getNombre():
                 return ar
-        return Archivo("", date(1, 1, 1))
+        return Archivo("", date(1, 1, 1), None)
     
-    def crearArchivo(self, nombre, fecha_creacion, ruta):
+    def crearArchivo(self, nombre, fecha_creacion, ruta, propietario):
         separados = ruta.split("/")
         if len(separados) == 1:
             if self.tieneArchivo(nombre).getNombre() == "":
-                self.archivos.append(Archivo(nombre, fecha_creacion))
+                self.archivos.append(Archivo(nombre, fecha_creacion, propietario))
                 return True
             return False
         
@@ -50,7 +50,7 @@ class Directorio:
             return False
         
         nueva_ruta = "/".join(separados[1:])
-        return dir.crearArchivo(nombre, fecha_creacion, nueva_ruta)
+        return dir.crearArchivo(nombre, fecha_creacion, nueva_ruta, propietario)
     
     def getNumArchivos(self):
         contador = 0

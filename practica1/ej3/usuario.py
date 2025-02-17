@@ -38,7 +38,7 @@ class Usuario:
         dir = self.directorioValido(ruta)
         if dir.getNombre() == "":
             return False
-        return dir.crearArchivo(nombre, fecha_creacion, ruta)
+        return dir.crearArchivo(nombre, fecha_creacion, ruta, self)
 
     def getNumArchivos(self):
         contador = 0
@@ -51,5 +51,12 @@ class Usuario:
         for dir in self.directorios:
             tam += dir.getTamanoTotal()
         return tam
+    
+    def tieneAcceso(self, archivo, fecha):
+        return archivo.tienePermiso(self, fecha)
+    
+    def modificar(self, archivo, fecha):
+        #? Podria modificar el espacio ocupado del archivo en cuestion...
+        pass
 
 #? Muy posible el futuro encapsulamiento por una entidad handler Sistema

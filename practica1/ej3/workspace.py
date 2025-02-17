@@ -56,6 +56,20 @@ def main():
     print("Nuevo archivo? ", b8)
     print("\n")
 
+    #* Compartir archivos
+    u2 = Usuario("Carmen", "car@hotmail.com", "hola")
+    ar1 = u1.directorios[0].archivos[0]  # buscaminas
+    ar2 = u1.directorios[0].directorios[0].archivos[0] # diablo
+    print("Accede a buscaminas (pre)? ", u2.tieneAcceso(ar1, date(2025, 2, 2)))
+    ar1.compartirCon(u2)
+    #print(ar1.permitidos)
+    print("Accede a buscaminas (propietario)?", u1.tieneAcceso(ar1, date(2025, 2, 2)))
+    print("Accede a buscaminas (post)? ", u2.tieneAcceso(ar1, date(2025, 2, 2)))
+    ar2.publicar(date(2025, 2, 1))
+    print("Accede a diablo (16/1)? ", u2.tieneAcceso(ar2, date(2025, 1, 16)))
+    print("Accede a diablo (2/2)? ", u2.tieneAcceso(ar2, date(2025, 2, 2)))
+    print()
+
     #* Funciones Recursivas
     print("Numero de archivos: ", u1.getNumArchivos())
     print("Tamano total: ", u1.getTamanoTotal())
@@ -77,4 +91,4 @@ if __name__ == "__main__":
 #! TODO:
 #* Funcion cantidad de archivos         [x]
 #* Funcion espacio total ocupado        [x]
-#* Compartir archivos                   []
+#* Compartir archivos                   [x]
