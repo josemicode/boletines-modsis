@@ -4,10 +4,11 @@ class Sistema:
     def __init__(self):
         pass
 
-    def registrar(self, usuario, coste):
+    def crearPropiedadPara(self, usuario, coste):
         nueva_propiedad = Propiedad(coste)
-        usuario.propiedades.append(nueva_propiedad)
+        usuario.registrarPropiedad(nueva_propiedad)
 
+    #! Asignar/Delegar a propiedad
     def reservaViable(self, propiedad, fecha_inicio, fecha_fin):
         for reserva in propiedad.reservas:
             menor = max(reserva.inicio, fecha_inicio)
@@ -40,6 +41,7 @@ class Sistema:
                 return False
         return True
 
+    #! Delegar a propiedad
     def introducirRegla(self, nueva_regla, propiedad):
         if nueva_regla.prioridad == 1:
             aplicable = self.noExisteReglaRango(nueva_regla, propiedad)
