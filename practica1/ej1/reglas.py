@@ -37,7 +37,7 @@ class ReglaRango(Regla):
         mayor = min(salida, self.fin)
 
         if menor > mayor:
-            return 0;
+            return 0
 
         #! Dependiendo de como se calcule (diferencia entre un dia y el mismo = 1 // 0)
         return (mayor - menor).days
