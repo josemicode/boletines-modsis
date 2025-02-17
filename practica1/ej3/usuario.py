@@ -41,9 +41,15 @@ class Usuario:
         return dir.crearArchivo(nombre, fecha_creacion, ruta)
 
     def getNumArchivos(self):
-        pass
+        contador = 0
+        for dir in self.directorios:
+            contador += dir.getNumArchivos()
+        return contador
 
     def getTamanoTotal(self):
-        pass
+        tam = 0
+        for dir in self.directorios:
+            tam += dir.getTamanoTotal()
+        return tam
 
 #? Muy posible el futuro encapsulamiento por una entidad handler Sistema

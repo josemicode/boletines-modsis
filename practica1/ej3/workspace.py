@@ -56,6 +56,10 @@ def main():
     print("Nuevo archivo? ", b8)
     print("\n")
 
+    #* Funciones Recursivas
+    print("Numero de archivos: ", u1.getNumArchivos())
+    print("Tamano total: ", u1.getTamanoTotal())
+
 '''
 - Controlar que dado un usuario y un archivo, el usuario pueda acceder al archivo.
 - Dado un usuario, retornar la cantidad de archivos que tiene.
@@ -71,5 +75,6 @@ if __name__ == "__main__":
 #* Testear creacion de archivos         [x]
 
 #! TODO:
-#* Funcion cantidad de archivos         []
-#* Funcion espacio total ocupado        []
+#* Funcion cantidad de archivos         [x]
+#* Funcion espacio total ocupado        [x]
+#* Compartir archivos                   []

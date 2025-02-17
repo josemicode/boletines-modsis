@@ -3,7 +3,7 @@ class Archivo:
         self.nombre = nombre
         self.fecha_creacion = fecha_creacion
         self.fecha_modificacion = fecha_creacion
-        self.tamano = 0
+        self.tamano = 10 #! demo
     
     def getNombre(self):
         return self.nombre

@@ -51,3 +51,22 @@ class Directorio:
         
         nueva_ruta = "/".join(separados[1:])
         return dir.crearArchivo(nombre, fecha_creacion, nueva_ruta)
+    
+    def getNumArchivos(self):
+        contador = 0
+        for ar in self.archivos:
+            contador += 1
+
+        for dir in self.directorios:
+            contador += dir.getNumArchivos()
+        
+        return contador
+    
+    def getTamanoTotal(self):
+        tam = 0
+        for ar in self.archivos:
+            tam += ar.getTamano()
+
+        for dir in self.directorios:
+            tam += dir.getTamanoTotal()
+        return tam
