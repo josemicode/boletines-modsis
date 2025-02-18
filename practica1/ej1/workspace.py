@@ -40,7 +40,7 @@ def main():
     proceso1 = sistema.alquilar(propiedad1, usuario2, date(2025, 2, 5), date(2025, 2, 10))
     print("Reserva 1 completada? ", proceso1)
     reserva1 = propiedad1.reservas[0]
-    print(reserva1.reservaToString(), "\n")
+    print(reserva1.toString(), "\n")
 
     proceso2 = sistema.alquilar(propiedad1, usuario2, date(2025, 1, 29), date(2025, 2, 6))
     print("Reserva 2 completada? ", proceso2, "\n")
@@ -48,7 +48,7 @@ def main():
     proceso3 = sistema.alquilar(propiedad1, usuario2, date(2025, 5, 5), date(2025, 5, 25))
     print("Reserva 3 completada? ", proceso3)
     reserva2 = propiedad1.reservas[1]
-    print(reserva2.reservaToString(), "\n")
+    print(reserva2.toString(), "\n")
 
 if __name__ == "__main__":
     main()

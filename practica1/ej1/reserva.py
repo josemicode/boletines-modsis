@@ -17,5 +17,5 @@ class Reserva:
     def getUsuarioAsignado(self):
         return self.usuario_asignado
 
-    def reservaToString(self):
+    def toString(self):
         return f"Inicio: {self.getFechaInicio()}, Fin: {self.getFechaFin()}, Precio: {self.getPrecio()}, Usuario: {self.getUsuarioAsignado().getNombre()}"
