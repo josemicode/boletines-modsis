@@ -1,11 +1,15 @@
 from propiedad import Propiedad
 from sistema import Sistema
 class Usuario:
-    def __init__(self):
+    def __init__(self, nombre):
+        self.nombre = nombre
         self.propiedades = []
     
     def registrarPropiedad(self, nueva_propiedad):
         self.propiedades.append(nueva_propiedad)
+
+    def getNombre(self):
+        return self.nombre
 
     #def alquilarPropiedad(self, propiedad, fecha_inicio, fecha_fin):
         # return Sistema().alquilar(propiedad, fecha_inicio, fecha_fin)
