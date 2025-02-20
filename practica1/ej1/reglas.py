@@ -12,7 +12,7 @@ class Regla(ABC):
     def __init__(self, factor):
         self.factor = factor
     
-    @property
+    @property # quitar
     @abstractmethod
     def prioridad(self):
         pass
@@ -22,6 +22,7 @@ class Regla(ABC):
         pass
 
 class ReglaRango(Regla):
+    #prioridad = 1
     def __init__(self, factor, fecha_inicio, fecha_fin):
         super().__init__(factor)
         self.inicio = fecha_inicio

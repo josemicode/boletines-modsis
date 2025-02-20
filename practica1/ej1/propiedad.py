@@ -1,4 +1,4 @@
-from datetime import datetime
+#from datetime import datetime
 #import reglas
 class Propiedad:
     def __init__(self, coste_noche):
