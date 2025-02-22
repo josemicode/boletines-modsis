@@ -31,3 +31,6 @@ class Usuario:
             self.descargas.append(recurso)
             return True
         return False
+
+    def __str__(self):
+        return f"Usuario: nombre - {self.nombre}, email - {self.email}"

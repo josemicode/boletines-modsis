@@ -41,7 +41,16 @@ def main():
     compra3 = Compra(usuario1, recurso3, date.today())
 
     #* Mostrar resultados
-    #...
+    print(creador1)
+    print(creador2)
+    print(recurso1)
+    print(recurso2)
+    print(recurso3)
+    print(usuario1)
+    print(usuario2)
+    print(compra1)
+    print(compra2)
+    print(compra3)
 
 if __name__ == "__main__":
     main()

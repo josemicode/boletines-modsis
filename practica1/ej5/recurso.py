@@ -40,3 +40,6 @@ class Recurso:
     
     def vender(self):
         self.ventas += 1
+
+    def __str__(self):
+        return f"Recurso: descripcion - {self.descripcion}, precio_base - {self.precio_base}, estrategia - {self.estrategia}"

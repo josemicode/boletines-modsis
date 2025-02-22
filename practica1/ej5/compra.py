@@ -37,3 +37,6 @@ class Compra:
             return estrategia.calcularPuntos(precio_base, self.getFecha())
         
         return estrategia.calcularPuntos(precio_base)
+    
+    def __str__(self):
+        return f"Compra: usuario - {self.usuario.getNombre()}, recurso - {self.recurso.getDescripcion()}, fecha - {self.fecha}, coste - {self.coste}, puntos - {self.puntos})"

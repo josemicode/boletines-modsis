@@ -21,3 +21,6 @@ class Creador:
     
     def sumarPuntos(self, puntos):
         self.puntos += puntos
+
+    def __str__(self):
+        return f"Creador: nombre - {self.nombre}, email - {self.email}, puntos - {self.puntos}"

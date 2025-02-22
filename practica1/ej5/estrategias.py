@@ -27,6 +27,10 @@ class Estrategia(ABC):
     def descargable(self, ventas):
         pass
 
+    @abstractmethod
+    def __str__(self):
+        pass
+
 class Normal(Estrategia):
     def __init__(self):
         pass
@@ -39,6 +43,9 @@ class Normal(Estrategia):
     
     def descargable(self, ventas):
         return True
+    
+    def __str__(self):
+        return "Normal"
 
 class Oferta(Estrategia):
     def __init__(self, porcentaje, fecha_limite):
@@ -57,6 +64,9 @@ class Oferta(Estrategia):
     
     def descargable(self, ventas):
         return True
+    
+    def __str__(self):
+        return "Oferta"
 
 class CrowdBased(Estrategia):
     def __init__(self, cupo_usuarios):
@@ -70,3 +80,6 @@ class CrowdBased(Estrategia):
     
     def descargable(self, ventas):
         return ventas >= self.minimo
+    
+    def __str__(self):
+        return "Crowd-based"
