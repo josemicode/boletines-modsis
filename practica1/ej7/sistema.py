@@ -10,5 +10,9 @@ class Sistema:
                 lista.append(fl)
         return lista
     
+    def getOfertas(self):
+        return self.ofertas
+
     def getOfertasOrdenadasPorPuntaje(self):
-        pass
+        self.ofertas.sort(key=lambda oferta: oferta.getPuntaje())
+        return self.ofertas

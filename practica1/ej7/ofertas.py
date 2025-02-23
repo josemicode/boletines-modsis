@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from datetime import date
 # Registrar oferta para proyecto: para brindarle flexibilidad a cada freelancer
 # a la hora de cotizar los proyectos según aspectos profesionales no
 # contemplados en la aplicación, las ofertas de trabajo pueden ser:
@@ -16,14 +17,38 @@ class Oferta(ABC):
     def __init__(self):
         pass
 
+    @abstractmethod
+    def calcularPrecioFinal(self):
+        pass
+
+    @abstractmethod
+    def getPuntaje(self):
+        pass
+
 class OfertaPorHora(Oferta):
-    def __init__(self, fecha_oferta, horas, fecha_entrega):
+    def __init__(self, fecha_oferta, horas, fecha_entrega, precio_hora):
         self.fecha_oferta = fecha_oferta
         self.horas = horas
+        self.precio_hora = precio_hora
         self.fecha_entrega = fecha_entrega
+
+    def calcularPrecioFinal(self):
+        return self.horas * self.precio_hora
+
+    def getPuntaje(self):
+        return self.calcularPrecioFinal() / (self.fecha_entrega - self.fecha_oferta).days
 
 class OfertaPorPosicion(Oferta):
     def __init__(self, fecha_oferta, salario, horas_por_mes, meses):
+        self.fecha_oferta = fecha_oferta
         self.salario = salario
         self.horas = horas_por_mes
         self.meses = meses
+
+    def calcularPrecioFinal(self):
+        return self.salario * self.meses
+    
+    #* calcular fecha de entrega en base a cuantos meses pasa desde la fecha de inicio
+    def getPuntaje(self):
+        fecha_entrega = date(self.fecha_oferta.year, self.fecha_oferta.month + self.meses, self.fecha_oferta.day)
+        return self.calcularPrecioFinal() / (fecha_entrega - self.fecha_oferta).days
