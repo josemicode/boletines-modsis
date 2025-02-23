@@ -23,7 +23,7 @@ class OfertaPorHora(Oferta):
         self.fecha_entrega = fecha_entrega
 
 class OfertaPorPosicion(Oferta):
-    def __init__(self, fecha_oferta, salario, horas, meses):
+    def __init__(self, fecha_oferta, salario, horas_por_mes, meses):
         self.salario = salario
-        self.horas = horas
+        self.horas = horas_por_mes
         self.meses = meses
