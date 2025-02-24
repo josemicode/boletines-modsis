@@ -13,10 +13,12 @@ from datetime import date
 #     freelancer cotiza el proyecto en función de cobrar un sueldo
 #     mensual por una cantidad de horas de trabajo por mes por una
 #     cantidad de meses determinada.
+
+#! Oferta debe tener constancia de un freelancer: Adaptar...
 class Oferta(ABC):
     @abstractmethod
-    def __init__(self):
-        pass
+    def __init__(self, freelancer):
+        self.freelancer = freelancer
 
     @abstractmethod
     def calcularPrecioFinal(self):
@@ -31,7 +33,8 @@ class Oferta(ABC):
         pass
 
 class OfertaPorHora(Oferta):
-    def __init__(self, fecha_oferta, horas, fecha_entrega, precio_hora):
+    def __init__(self, freelancer, fecha_oferta, horas, fecha_entrega, precio_hora):
+        super().__init__(freelancer)
         self.fecha_oferta = fecha_oferta
         self.horas = horas
         self.precio_hora = precio_hora
@@ -52,7 +55,8 @@ class OfertaPorHora(Oferta):
         return f"Oferta por hora: {self.horas} horas a {self.precio_hora} por hora, puntaje: {self.puntaje}"
 
 class OfertaPorPosicion(Oferta):
-    def __init__(self, fecha_oferta, salario, horas_por_mes, meses):
+    def __init__(self, freelancer, fecha_oferta, salario, horas_por_mes, meses):
+        super().__init__(freelancer)
         self.fecha_oferta = fecha_oferta
         self.salario = salario
         self.horas = horas_por_mes
@@ -82,3 +86,10 @@ class OfertaPorPosicion(Oferta):
     
     def __str__(self):
         return f"Oferta por posición: {self.salario} por mes por {self.horas} horas por {self.meses} meses, puntaje: {self.puntaje}"
+
+'''
+[] --- []
+        |
+[] --- []
+ L []
+'''

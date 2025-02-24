@@ -1,13 +1,14 @@
 # Registrar un proyecto: Se indica el nombre, la descripción, la fecha hasta
 # la que se aceptan ofertas.
 class Proyecto:
-    def __init__(self, nombre, descripcion, fecha_limite, categoria):
+    def __init__(self, nombre, descripcion, fecha_limite, categoria, ofertas_disponibles):
         self.nombre = nombre
         self.descripcion = descripcion
         self.fecha_limite = fecha_limite
         self.categoria = categoria
         self.oferta = None
-        self.freelancer = None
+        self.ofertas_disponibles = ofertas_disponibles
+        self.freelancer = None #! Innecesario, oferta ahora conoce a un freelancer
 
     def getNombre(self):
         return self.nombre
