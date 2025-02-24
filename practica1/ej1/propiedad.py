@@ -1,4 +1,4 @@
-from datetime import datetime
+#from datetime import datetime
 #import reglas
 class Propiedad:
     def __init__(self, coste_noche):
@@ -8,7 +8,7 @@ class Propiedad:
 
     def nuevaRegla(self, regla):
         self.reglas.append(regla)
-        self.reglas.sort(key=lambda r: r.prioridad)
+        self.reglas.sort(key=lambda r: r.getPrioridad())
     
     def calcularPrecio(self, fecha_inicio, fecha_fin):
         precio = (fecha_fin - fecha_inicio).days * self.coste_noche
@@ -31,7 +31,7 @@ class Propiedad:
 
     def noExisteReglaRango(self, nueva_regla):
         for regla in self.reglas:
-            if regla.prioridad == 1:
+            if regla.getPrioridad() == 1:
                 menor = max(regla.inicio, nueva_regla.inicio)
                 mayor = min(regla.fin, nueva_regla.fin)
                 if menor <= mayor:
@@ -40,14 +40,15 @@ class Propiedad:
 
     def noExisteReglaProlongacion(self):
         for regla in self.reglas:
-            if regla.prioridad == 2:
+            if regla.getPrioridad() == 2:
                 return False
         return True
 
     def introducirRegla(self, nueva_regla):
-        if nueva_regla.prioridad == 1:
+        aplicable = False
+        if nueva_regla.getPrioridad() == 1:
             aplicable = self.noExisteReglaRango(nueva_regla)
-        elif nueva_regla.prioridad == 2:
+        elif nueva_regla.getPrioridad() == 2:
             aplicable = self.noExisteReglaProlongacion()
 
         if aplicable:

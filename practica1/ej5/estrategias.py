@@ -23,6 +23,14 @@ class Estrategia(ABC):
     def calcularPuntos(self, base):
         pass
 
+    @abstractmethod
+    def descargable(self, ventas):
+        pass
+
+    @abstractmethod
+    def __str__(self):
+        pass
+
 class Normal(Estrategia):
     def __init__(self):
         pass
@@ -32,30 +40,46 @@ class Normal(Estrategia):
 
     def calcularPuntos(self, base):
         return base * 10
+    
+    def descargable(self, ventas):
+        return True
+    
+    def __str__(self):
+        return "Normal"
 
 class Oferta(Estrategia):
     def __init__(self, porcentaje, fecha_limite):
         self.porcentaje = porcentaje
         self.fecha_limite = fecha_limite
 
-    def calcularCoste(self, base):
-        if self.fecha < self.fecha:
+    def calcularCoste(self, base, fecha_actual):
+        if fecha_actual < self.fecha_limite:
             return base * (1 - self.porcentaje)
         return base
 
-    def calcularPuntos(self, base):
-        if self.fecha < self.fecha_limite:
+    def calcularPuntos(self, base, fecha_actual):
+        if fecha_actual < self.fecha_limite:
             return base * 5
         return base * 10
+    
+    def descargable(self, ventas):
+        return True
+    
+    def __str__(self):
+        return "Oferta"
 
 class CrowdBased(Estrategia):
     def __init__(self, cupo_usuarios):
         self.minimo = cupo_usuarios
 
-    def calcularCoste(self, base, cupo_alcanzado):
-        if cupo_alcanzado < self.minimo:
-            return None
+    def calcularCoste(self, base):
         return base
 
     def calcularPuntos(self, base):
         return base * (50 / self.minimo)
+    
+    def descargable(self, ventas):
+        return ventas >= self.minimo
+    
+    def __str__(self):
+        return "Crowd-based"

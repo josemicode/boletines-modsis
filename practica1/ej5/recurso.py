@@ -11,14 +11,35 @@ class Recurso:
         self.fecha = fecha
         self.precio_base = precio
         self.estrategia = estrategia
+        self.ventas = 0
 
     
-    # def getCreador(self):
-    #     return self.creador
+    def getCreador(self):
+        return self.creador
     
-    # def getDescripcion(self):
-    #     return self.descripcion
+    def getDescripcion(self):
+        return self.descripcion
     
-    # def getPreview(self):
-        # return self.preview
+    def getPreview(self):
+        return self.preview
     
+    def getUrlDescarga(self):
+        return self.url_descarga
+    
+    def getFecha(self):
+        return self.fecha
+    
+    def getPrecioBase(self):
+        return self.precio_base
+    
+    def getEstrategia(self):
+        return self.estrategia
+    
+    def getVentas(self):
+        return self.ventas
+    
+    def vender(self):
+        self.ventas += 1
+
+    def __str__(self):
+        return f"Recurso: descripcion - {self.descripcion}, precio_base - {self.precio_base}, estrategia - {self.estrategia}"

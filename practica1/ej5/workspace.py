@@ -1,3 +1,9 @@
+from datetime import date
+from creador import Creador
+from recurso import Recurso
+from usuario import Usuario
+from compra import Compra
+from estrategias import Oferta, CrowdBased, Normal
 '''
 Una empresa requiere una plataforma para que diseñadores y creadores
 puedan comercializar por allí sus diseños y recursos (imágenes, íconos,
@@ -11,39 +17,40 @@ un futuro.
 '''
 
 def main():
-    pass
+    #* Crear creadores
+    creador1 = Creador("emilio32", "emilio32@gmail.com", "123456")
+    creador2 = Creador("DaVinci101", "davincicode@hotmail.com", "gsdgsgh_sowhfwe8")
+    
+    #* Crear estrategias
+    estrategia1 = Normal()
+    estrategia2 = Oferta(0.2, date(2023, 12, 31))
+    estrategia3 = CrowdBased(2)
 
-'''
-- Registrar nuevo creador de recursos: se indica su nombre, email,  
-contraseña y se inicia con 0 su cantidad de puntos.
-- Registrar un nuevo recurso: se indica el creador, una descripción del
-recurso, una imagen de previsualización, una URL de descarga, fecha de
-carga, su precio base y una estrategia de comercialización (que no podrán
-cambiar en el futuro), que inicialmente puede ser:
-    - Normal: implica que los usuarios podrán descargar el recurso
-    pagando el costo base del recurso.
-    - Oferta: se define una fecha límite y un porcentaje de descuento. Si
-    una compra se realiza antes de la fecha límite se aplica el
-    porcentaje de descuento, mientras que luego de dicha fecha se
-    cobra el costo base completo.
-    - Crowd-based: se define una cantidad de usuarios mínimos que
-    deben comprar el recurso. Solo cuando la cantidad de usuarios que
-    lo compran alcanza al menos ese límite, dichos compradores
-    podrán descargarlo, y se realizará el cobro considerando el precio
-    base del recurso.
-- Registrar nuevo usuario: se indica su nombre, email y contraseña.
-- Registrar una nueva compra de recurso: se indica el usuario y el recurso
-a adquirir. Cuando se crea una nueva compra, deben pasar varias cosas:
-    - Calcular el costo de la compra, la cual depende de la estrategia de
-    comercialización del producto.
-    - Calcular y registrar la cantidad de puntos que el creador sumará,
-    que se calcula también según la estrategia de comercialización:
-        - i. Normal: el puntaje resulta del costo base * 10.
-        - ii. Oferta: el puntaje resulta de costo de la compra * 5 cuando
-        la oferta aun no venció, y * 10 cuando ya ha vencido.
-        - iii. Crowd-based: el puntaje resulta de multiplicar el costo
-        base * 50 / la cantidad de usuarios mínimos.
-'''
+    #* Crear recursos
+    recurso1 = Recurso(creador1, "R1", "test.png", "ejemplo.com", date.today(), 100, estrategia1)
+    recurso2 = Recurso(creador2, "R2", "gatito.png", "2432/fotosdegatos.es", date.today(), 200, estrategia2)
+    recurso3 = Recurso(creador1, "R3", "chart.png", "plane55/charts.com", date.today(), 300, estrategia3)
+
+    #* Crear usuarios
+    usuario1 = Usuario("pokemaster", "poke@master.com", "gottacatchemall")
+    usuario2 = Usuario("Rocket", "rck99@gmail.com", "aaaa")
+
+    #* Registrar compras
+    compra1 = Compra(usuario1, recurso1, date.today())
+    compra2 = Compra(usuario2, recurso2, date(2023, 11, 30))  # Before offer expiry
+    compra3 = Compra(usuario1, recurso3, date.today())
+
+    #* Mostrar resultados
+    print(creador1)
+    print(creador2)
+    print(recurso1)
+    print(recurso2)
+    print(recurso3)
+    print(usuario1)
+    print(usuario2)
+    print(compra1)
+    print(compra2)
+    print(compra3)
 
 if __name__ == "__main__":
-    pass
+    main()

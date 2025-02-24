@@ -4,6 +4,9 @@ class Usuario:
         self.nombre = nombre
         self.email = email
         self.password = password
+        self.biblioteca = []
+        #? Necesario decidir si se necesita una lista de descargas o si simplemente habra un metodo que comprube si un recurso puede ser descargado
+        self.descargas = []
 
     def getNombre(self):
         return self.nombre
@@ -13,3 +16,21 @@ class Usuario:
     
     def getPassword(self):
         return self.password
+    
+    def getBiblioteca(self):
+        return self.biblioteca
+    
+    def getDescargas(self):
+        return self.descargas
+
+    def descargarRecurso(self, recurso):
+        if recurso not in self.getBiblioteca() or recurso in self.getDescargas():
+            return False
+        
+        if recurso.getEstrategia().descargable(recurso.getVentas()):
+            self.descargas.append(recurso)
+            return True
+        return False
+
+    def __str__(self):
+        return f"Usuario: nombre - {self.nombre}, email - {self.email}"
