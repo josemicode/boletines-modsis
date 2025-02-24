@@ -7,12 +7,11 @@ class Recurso:
         self.creador = creador
         self.descripcion = descripcion
         self.preview = imagen
-        self.url_descarga = url
+        self.url_descarga = url #! devolver si es descargable
         self.fecha = fecha
         self.precio_base = precio
         self.estrategia = estrategia
         self.ventas = 0
-
     
     def getCreador(self):
         return self.creador

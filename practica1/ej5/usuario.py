@@ -23,6 +23,7 @@ class Usuario:
     def getDescargas(self):
         return self.descargas
 
+    #! Delegar a Sistema como descargable(usuario, recurso)
     def descargarRecurso(self, recurso):
         if recurso not in self.getBiblioteca() or recurso in self.getDescargas():
             return False
