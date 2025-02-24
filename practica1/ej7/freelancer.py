@@ -23,3 +23,6 @@ class Freelancer:
     
     def sumarPuntaje(self, puntaje):
         self.puntaje += puntaje
+    
+    def __str__(self):
+        return f"Freelancer: nombre - {self.nombre}, email - {self.email}, precio por hora - {self.precio_hora}"

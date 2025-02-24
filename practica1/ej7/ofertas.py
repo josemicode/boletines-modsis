@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from datetime import date
+#from dateutil.relativedelta import relativedelta
 # Registrar oferta para proyecto: para brindarle flexibilidad a cada freelancer
 # a la hora de cotizar los proyectos según aspectos profesionales no
 # contemplados en la aplicación, las ofertas de trabajo pueden ser:
@@ -25,18 +26,30 @@ class Oferta(ABC):
     def getPuntaje(self):
         pass
 
+    @abstractmethod
+    def __str__(self):
+        pass
+
 class OfertaPorHora(Oferta):
     def __init__(self, fecha_oferta, horas, fecha_entrega, precio_hora):
         self.fecha_oferta = fecha_oferta
         self.horas = horas
         self.precio_hora = precio_hora
         self.fecha_entrega = fecha_entrega
+        self.puntaje = 0
+
+    def getFechaEntrega(self):
+        return self.fecha_entrega
 
     def calcularPrecioFinal(self):
         return self.horas * self.precio_hora
 
     def getPuntaje(self):
-        return self.calcularPrecioFinal() / (self.fecha_entrega - self.fecha_oferta).days
+        self.puntaje = self.calcularPrecioFinal() // (self.fecha_entrega - self.fecha_oferta).days
+        return self.puntaje
+
+    def __str__(self):
+        return f"Oferta por hora: {self.horas} horas a {self.precio_hora} por hora, puntaje: {self.puntaje}"
 
 class OfertaPorPosicion(Oferta):
     def __init__(self, fecha_oferta, salario, horas_por_mes, meses):
@@ -44,11 +57,28 @@ class OfertaPorPosicion(Oferta):
         self.salario = salario
         self.horas = horas_por_mes
         self.meses = meses
+        self.fecha_entrega = None
+        self.puntaje = 0
 
     def calcularPrecioFinal(self):
         return self.salario * self.meses
     
+    def calcularFechaEntrega(self):
+        meses = self.fecha_oferta.month + self.meses
+        anio = meses % 12
+        if anio > 0:
+            meses = meses // 12
+        self.fecha_entrega = date(self.fecha_oferta.year + anio, self.fecha_oferta.month + meses, self.fecha_oferta.day)
+    
+    def getFechaEntrega(self):
+        return self.fecha_entrega
+    
     #* calcular fecha de entrega en base a cuantos meses pasa desde la fecha de inicio
     def getPuntaje(self):
-        fecha_entrega = date(self.fecha_oferta.year, self.fecha_oferta.month + self.meses, self.fecha_oferta.day)
-        return self.calcularPrecioFinal() / (fecha_entrega - self.fecha_oferta).days
+        self.calcularFechaEntrega()
+        #fecha_entrega = self.fecha_oferta + relativedelta(days=self.meses)
+        self.puntaje = self.calcularPrecioFinal() // (self.fecha_entrega - self.fecha_oferta).days
+        return self.puntaje
+    
+    def __str__(self):
+        return f"Oferta por posición: {self.salario} por mes por {self.horas} horas por {self.meses} meses, puntaje: {self.puntaje}"

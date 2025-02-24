@@ -22,7 +22,7 @@ class Proyecto:
         return self.categoria
     
     def asignarOferta(self, oferta, fecha_asignacion):
-        if self.oferta != None and fecha_asignacion < self.fecha_limite:
+        if self.oferta is None and fecha_asignacion <= self.fecha_limite:
             self.oferta = oferta
             return True
         return False
@@ -36,6 +36,12 @@ class Proyecto:
     def asignarFreelancer(self, freelancer):
         self.freelancer = freelancer
     
-    def finalizar(self, fecha_finalizacion, puntaje):
-        self.fecha_finalizacion = fecha_finalizacion
-        self.getFreelancer().sumarPuntaje(puntaje)
+    def finalizar(self):
+        if self.oferta is None:
+            return False
+        self.fecha_finalizacion = self.oferta.getFechaEntrega()
+        self.getFreelancer().sumarPuntaje(self.oferta.getPuntaje())
+        return True
+
+    def __str__(self):
+        return f"Proyecto: nombre - {self.nombre}, descripcion - {self.descripcion}, fecha limite - {self.fecha_limite}"

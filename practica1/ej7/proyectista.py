@@ -4,7 +4,7 @@ class Proyectista:
     def __init__(self, nombre, email):
         self.nombre = nombre
         self.email = email
-        proyectos = []
+        self.proyectos = []
 
     def getNombre(self):
         return self.nombre
@@ -18,3 +18,9 @@ class Proyectista:
             if pr.getCategoria() == categoria:
                 lista.append(pr)
         return lista
+
+    def asignarProyecto(self, proyecto):
+        self.proyectos.append(proyecto)
+
+    def __str__(self):
+        return f"Proyectista: nombre - {self.nombre}, email - {self.email}"

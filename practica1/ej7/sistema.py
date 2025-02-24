@@ -13,6 +13,5 @@ class Sistema:
     def getOfertas(self):
         return self.ofertas
 
-    def getOfertasOrdenadasPorPuntaje(self):
-        self.ofertas.sort(key=lambda oferta: oferta.getPuntaje())
-        return self.ofertas
+    def ordenarOfertasPorPuntaje(self):
+        self.ofertas.sort(key=lambda oferta: oferta.getPuntaje(), reverse=True)
