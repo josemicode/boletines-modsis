@@ -74,9 +74,6 @@ def main():
     proyecto.finalizar()
     print(f"Proyecto finalizado con puntaje: {freelancer.puntaje}")
 
-if __name__ == "__main__":
-    main()
-
 '''
 - Registrar un <proyectista>: Se le indica el nombre del proyectista y su
 dirección de email.

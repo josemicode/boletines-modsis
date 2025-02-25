@@ -21,6 +21,10 @@ class Oferta(ABC):
         self.freelancer = freelancer
 
     @abstractmethod
+    def getFreelancer(self):
+        pass
+
+    @abstractmethod
     def calcularPrecioFinal(self):
         pass
 
@@ -33,26 +37,28 @@ class Oferta(ABC):
         pass
 
 class OfertaPorHora(Oferta):
-    def __init__(self, freelancer, fecha_oferta, horas, fecha_entrega, precio_hora):
+    def __init__(self, freelancer, fecha_oferta, horas, fecha_entrega):
         super().__init__(freelancer)
         self.fecha_oferta = fecha_oferta
         self.horas = horas
-        self.precio_hora = precio_hora
         self.fecha_entrega = fecha_entrega
         self.puntaje = 0
+
+    def getFreelancer(self):
+        return self.freelancer
 
     def getFechaEntrega(self):
         return self.fecha_entrega
 
     def calcularPrecioFinal(self):
-        return self.horas * self.precio_hora
+        return self.horas * self.freelancer.getPrecioHora()
 
     def getPuntaje(self):
         self.puntaje = self.calcularPrecioFinal() // (self.fecha_entrega - self.fecha_oferta).days
         return self.puntaje
 
     def __str__(self):
-        return f"Oferta por hora: {self.horas} horas a {self.precio_hora} por hora, puntaje: {self.puntaje}"
+        return f"Oferta por hora: {self.horas} horas a {self.freelancer.getPrecioHora()} por hora, puntaje: {self.puntaje}"
 
 class OfertaPorPosicion(Oferta):
     def __init__(self, freelancer, fecha_oferta, salario, horas_por_mes, meses):
@@ -63,6 +69,9 @@ class OfertaPorPosicion(Oferta):
         self.meses = meses
         self.fecha_entrega = None
         self.puntaje = 0
+
+    def getFreelancer(self):
+        return self.freelancer
 
     def calcularPrecioFinal(self):
         return self.salario * self.meses
