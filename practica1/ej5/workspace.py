@@ -37,7 +37,7 @@ def main():
 
     #* Registrar compras
     compra1 = Compra(usuario1, recurso1, date.today())
-    compra2 = Compra(usuario2, recurso2, date(2023, 11, 30))  # Before offer expiry
+    compra2 = Compra(usuario2, recurso2, date(2023, 11, 30)) 
     compra3 = Compra(usuario1, recurso3, date.today())
 
     #* Mostrar resultados

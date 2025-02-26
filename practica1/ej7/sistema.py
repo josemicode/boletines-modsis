@@ -1,7 +1,7 @@
 class Sistema:
-    def __init__(self, lista_freelancers, lista_ofertas):
+    def __init__(self, lista_freelancers):
         self.freelancers = lista_freelancers
-        self.ofertas = lista_ofertas #! quitar
+        # self.ofertas = lista_ofertas #! quitar
 
     def getFreelancersPorCategoria(self, categoria):
         lista = []
@@ -11,9 +11,9 @@ class Sistema:
         return lista
     
     #! DL Proyecto
-    def getOfertas(self):
-        return self.ofertas
+    # def getOfertas(self):
+    #     return self.ofertas
 
     #! Delegar a Proyecto
-    def ordenarOfertasPorPuntaje(self):
-        self.ofertas.sort(key=lambda oferta: oferta.getPuntaje(), reverse=True)
+    # def ordenarOfertasPorPuntaje(self):
+    #     self.ofertas.sort(key=lambda oferta: oferta.getPuntaje(), reverse=True)
