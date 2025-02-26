@@ -1,5 +1,5 @@
 class Sistema:
-    def __init__(self, lista_freelancers, lista_ofertas):
+    def __init__(self, lista_freelancers):
         self.freelancers = lista_freelancers
         # self.ofertas = lista_ofertas #! quitar
 

@@ -37,7 +37,7 @@ class Oferta(ABC):
         pass
 
 class OfertaPorHora(Oferta):
-    def __init__(self, freelancer, fecha_oferta, horas, fecha_entrega):
+    def __init__(self, freelancer, horas, fecha_oferta, fecha_entrega):
         super().__init__(freelancer)
         self.fecha_oferta = fecha_oferta
         self.horas = horas
@@ -61,12 +61,12 @@ class OfertaPorHora(Oferta):
         return f"Oferta por hora: {self.horas} horas a {self.freelancer.getPrecioHora()} por hora, puntaje: {self.puntaje}"
 
 class OfertaPorPosicion(Oferta):
-    def __init__(self, freelancer, fecha_oferta, salario, horas_por_mes, meses):
+    def __init__(self, freelancer, horas_por_mes, salario, meses, fecha_oferta):
         super().__init__(freelancer)
-        self.fecha_oferta = fecha_oferta
-        self.salario = salario
         self.horas = horas_por_mes
+        self.salario = salario
         self.meses = meses
+        self.fecha_oferta = fecha_oferta
         self.fecha_entrega = None
         self.puntaje = 0
 

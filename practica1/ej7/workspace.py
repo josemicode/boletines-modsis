@@ -27,20 +27,21 @@ def main():
     proyectista = Proyectista("Juan Perez", "juan.perez@example.com")
 
     # Registrar un freelancer
-    freelancer = Freelancer("Ana Gomez", "ana.gomez@example.com", 50, [Categoria.WEB, Categoria.DG])
-
-    # Registrar un proyecto y asignar a proyectista
-    proyecto = Proyecto("Desarrollo Web", "Desarrollar una página web", date(2023, 12, 31), Categoria.WEB)
-    proyectista.asignarProyecto(proyecto)
+    fr1 = Freelancer("Ana Gomez", "ana.gomez@example.com", 50, [Categoria.WEB, Categoria.DG])
+    fr1.sumarPuntaje(20)
 
     # Registrar oferta para proyecto (por hora de trabajo)
-    oferta_por_hora = OfertaPorHora(date(2023, 11, 1), 100, date(2023, 12, 15), freelancer.getPrecioHora())
+    o1 = OfertaPorHora(fr1, 100, date(2023, 11, 1), date(2023, 12, 2))
 
     # Registrar oferta para proyecto (por posición de trabajo)
-    oferta_por_posicion = OfertaPorPosicion(date(2023, 11, 1), 2000, 160, 2)
+    o2 = OfertaPorPosicion(fr1, 50, 2300, 2, date(2023, 11, 1))
 
-    # Crear sistema y agregar freelancers y ofertas
-    sistema = Sistema([freelancer], [oferta_por_hora, oferta_por_posicion])
+    # Registrar un proyecto y asignar a proyectista
+    pr1 = Proyecto("ToDo", "Desarrollar una pagina web tipo ToDo List", date(2023, 12, 31), Categoria.WEB, [o1, o2])
+    proyectista.asignarProyecto(pr1)
+
+    # Crear sistema y agregar freelancers
+    sistema = Sistema([fr1])
 
     # Buscar un proyecto por categoría
     proyectos_web = proyectista.getProyectosPorCategoria(Categoria.WEB)
@@ -56,23 +57,23 @@ def main():
 
     # Recomendar oferta de proyectos
     print("Ofertas ordenadas por puntaje:")
-    sistema.ordenarOfertasPorPuntaje()
-    ofertas_ordenadas = sistema.getOfertas()
+    pr1.ordenarOfertasPorPuntaje()
+    ofertas_ordenadas = pr1.getOfertas()
     for of in ofertas_ordenadas:
         print(of)
     #sistema.listarOfertas()
 
-    # Asignar oferta a un proyecto
-    proyecto.asignarOferta(oferta_por_hora, date(2023, 11, 2))
-    proyecto.asignarFreelancer(freelancer)
+    # Asignar oferta ganadora al proyecto
+    oferta_ganadora = ofertas_ordenadas[0]
+    pr1.asignarOferta(oferta_ganadora, date(2023, 11, 2))
 
     # Retornar el freelancer asignado a un proyecto
-    freelancer_asignado = proyecto.getFreelancer().getNombre()
+    freelancer_asignado = pr1.getOfertaFinal().getFreelancer()
     print(f"Freelancer asignado al proyecto: {freelancer_asignado}")
 
     # Registrar finalización de proyecto
-    proyecto.finalizar()
-    print(f"Proyecto finalizado con puntaje: {freelancer.puntaje}")
+    pr1.finalizar()
+    print("Freelancer fr1 acaba con un total de ", fr1.puntaje, " puntos")
 
 '''
 - Registrar un <proyectista>: Se le indica el nombre del proyectista y su
