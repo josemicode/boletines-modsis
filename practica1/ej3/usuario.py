@@ -55,8 +55,6 @@ class Usuario:
     def tieneAcceso(self, archivo, fecha):
         return archivo.tienePermiso(self, fecha)
     
-    def modificar(self, archivo, fecha):
-        #? Podria modificar el espacio ocupado del archivo en cuestion...
-        pass
-
-#? Muy posible el futuro encapsulamiento por una entidad handler Sistema
+    # def modificar(self, archivo, fecha):
+    #     # Podria modificar el espacio ocupado del archivo en cuestion...
+    #     pass

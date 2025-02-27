@@ -21,8 +21,11 @@ class Freelancer:
     def getCategorias(self):
         return self.categorias
     
-    def sumarPuntaje(self, puntaje):
-        self.puntaje += puntaje
+    def getPuntaje(self):
+        return self.puntaje
+
+    def sumarPuntaje(self, puntos):
+        self.puntaje += puntos
     
     def __str__(self):
         return f"Freelancer: nombre - {self.nombre}, email - {self.email}, precio por hora - {self.precio_hora}"

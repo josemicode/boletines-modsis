@@ -13,8 +13,6 @@ from datetime import date
 #     freelancer cotiza el proyecto en función de cobrar un sueldo
 #     mensual por una cantidad de horas de trabajo por mes por una
 #     cantidad de meses determinada.
-
-#! Oferta debe tener constancia de un freelancer: Adaptar...
 class Oferta(ABC):
     @abstractmethod
     def __init__(self, freelancer):
