@@ -1,3 +1,5 @@
+from ej4 import *
+
 def main():
     pass
 
