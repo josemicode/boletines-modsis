@@ -16,6 +16,7 @@ class AbonoAnual(Abono):
     def __init__(self, fecha_inicio):
         super().__init__()
         self.fecha_inicio = fecha_inicio
+        self.precio = 100
 
     def calcularCoste(self, tiempo_uso):
         if tiempo_uso > 30:
@@ -43,6 +44,7 @@ class AbonoTuristico(Abono):
     def __init__(self, fecha_inicio):
         super().__init__()
         self.fecha_inicio = fecha_inicio
+        self.precio = 10
 
     def calcularCoste(self, tiempo_uso):
         if tiempo_uso > 120:
@@ -79,7 +81,7 @@ class Usuario():
         if estacion.bicicletas_disponibles > 0:
             self.uso_bici = True
             estacion.bicicletas_disponibles -= 1
-            estacion.estacionaminetos_libres += 1
+            estacion.estacionamientos_libres += 1
             print(f"{self.nombre} ha tomado una bicicleta de la estación {estacion.ubicacion}.")
         else:
             print("No hay bicicletas disponibles en esta estación.")
@@ -91,7 +93,7 @@ class Usuario():
         
         self.uso_bici = False
         estacion.bicicletas_disponibles += 1
-        estacion.estacionaminetos_libres -= 1
+        estacion.estacionamientos_libres -= 1
         print(f"{self.nombre} ha devuelto una bicicleta en la estación {estacion.ubicacion}.")
         
         if self.abono:
