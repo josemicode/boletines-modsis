@@ -5,11 +5,12 @@ class Compra:
         self.usuario = usuario
         self.recurso = recurso
         self.fecha = fecha
-        #? Podria calcular el costo y los puntos en el constructor
+        #* Se calcula el costo y los puntos en el constructor
         self.coste = self.calcularCoste()
         self.recurso.vender()
         self.puntos = self.calcularPuntos()
         self.recurso.getCreador().sumarPuntos(self.puntos)
+        self.usuario.nuevoRecurso(self.recurso)
     
     def getUsuario(self):
         return self.usuario

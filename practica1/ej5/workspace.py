@@ -4,6 +4,7 @@ from recurso import Recurso
 from usuario import Usuario
 from compra import Compra
 from estrategias import Oferta, CrowdBased, Normal
+from sistema import Sistema
 '''
 Una empresa requiere una plataforma para que diseñadores y creadores
 puedan comercializar por allí sus diseños y recursos (imágenes, íconos,
@@ -51,6 +52,38 @@ def main():
     print(compra1)
     print(compra2)
     print(compra3)
+    print()
+
+    print("Puntos de creador1:", creador1.getPuntos())
+    print("Puntos de creador2:", creador2.getPuntos())
+
+    print("\nBiblioteca de usuario1: ")
+    for rec in usuario1.getBiblioteca():
+        print(rec)
+
+    print("\nBiblioteca de usuario2: ")
+    for rec in usuario2.getBiblioteca():
+        print(rec)
+
+    print("\nUrls de usuario1: ")
+    for rec in usuario1.getBiblioteca():
+        Sistema().recursoDescargablePor(rec, usuario1)
+    for url in usuario1.getUrls():
+        print(url)
+
+    print("\nUrls de usuario2: ")
+    for rec in usuario2.getBiblioteca():
+        Sistema().recursoDescargablePor(rec, usuario2)
+    for url in usuario2.getUrls():
+        print(url)
+    
+    #* Comprobacion adicional de crowd-based
+    print("\nComprobamos que R3 se pueda descargar al llegar al cupo de ventas (2)")
+    compra4 = Compra(usuario2, recurso3, date.today())
+    Sistema().recursoDescargablePor(recurso3, usuario1)
+    print("Urls de usuario1: ")
+    for url in usuario1.getUrls():
+        print(url)
 
 if __name__ == "__main__":
     main()

@@ -15,7 +15,6 @@ class Directorio:
                 return dir
         return Directorio("")
     
-    #FIXME: impedir dirs duplicados
     def crearDirectorio(self, nombre, ruta):
         separados = ruta.split("/")
         if len(separados) == 1:

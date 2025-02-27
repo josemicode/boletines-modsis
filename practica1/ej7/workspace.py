@@ -73,7 +73,7 @@ def main():
 
     # Registrar finalización de proyecto
     pr1.finalizar()
-    print("Freelancer fr1 acaba con un total de ", fr1.puntaje, " puntos")
+    print("Freelancer fr1 acaba con un total de ", fr1.getPuntaje(), " puntos")
 
 '''
 - Registrar un <proyectista>: Se le indica el nombre del proyectista y su

@@ -4,7 +4,7 @@ class Archivo:
         self.fecha_creacion = fecha_creacion
         self.fecha_modificacion = fecha_creacion
         self.propietario = propietario
-        self.tamano = 10 #! demo
+        self.tamano = 10 #? Valor por defecto para evitar nuevo metodo de modificacion de archivo
         #* Atributos de control de permisos
         self.fecha_caducidad = None
         self.permitidos = []
