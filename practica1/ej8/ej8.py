@@ -7,11 +7,11 @@ class Integrante:
         self.puntaje = 0
         self.tareas_asignadas = []
 
-    def asignar_tarea(self, tarea):
+    def asignarTarea(self, tarea):
         self.tareas_asignadas.append(tarea)
 
-    def calcular_puntaje(self, tarea):
-        puntaje = calcular_puntaje_tarea(tarea)
+    def calcularPuntaje(self, tarea):
+        puntaje = calcularPuntajeTarea(tarea)
         print(f"Calculando puntaje para {self.nombre} en tarea {tarea.titulo}: {puntaje}")
         return puntaje
 
@@ -30,20 +30,20 @@ class Tarea:
         self.asignaciones = []
         self.lista = None 
 
-    def asignar_integrante(self, integrante, fecha_asignacion):
+    def asignarIntegrante(self, integrante, fecha_asignacion):
         # Si ya hay una asignación previa, cerramos la anterior
         if self.asignaciones:
             self.asignaciones[-1].fecha_cierre = datetime.now()
         asignacion = Asignacion(integrante, self, fecha_asignacion)
         self.asignaciones.append(asignacion)
-        integrante.asignar_tarea(self)
+        integrante.asignarTarea(self)
         print(f"Tarea '{self.titulo}' asignada a {integrante.nombre} en {fecha_asignacion}")
 
-    def finalizar_tarea(self):
+    def finalizarTarea(self):
         self.fecha_cierre = datetime.now()
         print(f"Tarea '{self.titulo}' finalizada")
 
-    def mover_lista(self, nueva_lista):
+    def moverLista(self, nueva_lista):
         self.lista = nueva_lista
         print(f"Tarea '{self.titulo}' movida a la lista '{nueva_lista.nombre}'")
 
@@ -63,15 +63,15 @@ class ListaTareas:
         self.nombre = nombre
         self.tareas = []
 
-    def agregar_tarea(self, tarea):
+    def agregarTarea(self, tarea):
         self.tareas.append(tarea)
         tarea.lista = self
         print(f"Tarea '{tarea.titulo}' agregada a la lista '{self.nombre}'")
 
-    def mover_tarea(self, tarea, nueva_lista):
+    def moverTarea(self, tarea, nueva_lista):
         if tarea in self.tareas:
             self.tareas.remove(tarea)
-            nueva_lista.agregar_tarea(tarea)
+            nueva_lista.agregarTarea(tarea)
             print(f"Tarea '{tarea.titulo}' movida de lista '{self.nombre}' a '{nueva_lista.nombre}'")
 
     def __str__(self):
@@ -82,29 +82,29 @@ class Tablero:
         self.nombre = nombre
         self.lider = lider
         self.listas = []
-        self.crear_lista("Backlog")
+        self.crearLista("Backlog")
 
-    def crear_lista(self, nombre_lista):
+    def crearLista(self, nombre_lista):
         nueva_lista = ListaTareas(nombre_lista)
         self.listas.append(nueva_lista)
         print(f"Lista '{nombre_lista}' creada en el tablero")
 
-    def crear_tarea(self, titulo, descripcion, fecha_tope, complejidad, tipo):
+    def crearTarea(self, titulo, descripcion, fecha_tope, complejidad, tipo):
         tarea = Tarea(titulo, descripcion, fecha_tope, complejidad, tipo)
         # Asigna la tarea a la lista Backlog por defecto
-        self.listas[0].agregar_tarea(tarea)
+        self.listas[0].agregarTarea(tarea)
         print(f"Tarea '{titulo}' creada y agregada al Backlog")
         return tarea
 
-    def asignar_tarea(self, tarea, integrante, fecha_asignacion):
-        tarea.asignar_integrante(integrante, fecha_asignacion)
+    def asignarTarea(self, tarea, integrante, fecha_asignacion):
+        tarea.asignarIntegrante(integrante, fecha_asignacion)
 
-    def mover_tarea(self, tarea, lista_destino):
+    def moverTarea(self, tarea, lista_destino):
         for lista in self.listas:
             if tarea in lista.tareas:
-                lista.mover_tarea(tarea, lista_destino)
+                lista.moverTarea(tarea, lista_destino)
 
-    def listar_tareas_pendientes(self):
+    def listarTareasPendientes(self):
         tareas_pendientes = []
         for lista in self.listas:
             for tarea in lista.tareas:
@@ -116,7 +116,7 @@ class Tablero:
             print(tarea)
         return [str(tarea) for tarea in tareas_pendientes]
 
-    def listar_tareas_usuario(self, usuario):
+    def listarTareasUsuario(self, usuario):
         tareas_usuario = []
         for lista in self.listas:
             for tarea in lista.tareas:
@@ -128,7 +128,7 @@ class Tablero:
             print(tarea)
         return tareas_usuario
 
-    def cerrar_sprint(self):
+    def cerrarSprint(self):
         fecha_limite = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
         fecha_inicio = fecha_limite - timedelta(days=15)
 
@@ -139,7 +139,7 @@ class Tablero:
                     # Asignar puntaje al responsable de la tarea
                     for asignacion in tarea.asignaciones:
                         integrante = asignacion.integrante
-                        puntaje_tarea = integrante.calcular_puntaje(tarea)
+                        puntaje_tarea = integrante.calcularPuntaje(tarea)
                         integrante.puntaje += puntaje_tarea
 
                     # Si es una tarea de DIU, el líder también obtiene puntos si se completó a tiempo
@@ -150,7 +150,7 @@ class Tablero:
     def __str__(self):
         return f"Tablero: {self.nombre} | Líder: {self.lider.nombre}"
 
-def calcular_puntaje_tarea(tarea):
+def calcularPuntajeTarea(tarea):
     if tarea.tipo == 'DIU':
         if tarea.fecha_cierre and tarea.fecha_cierre <= tarea.fecha_tope:
             print(f"Tarea DIU '{tarea.titulo}' completada a tiempo, puntaje: {2 * tarea.complejidad}")
