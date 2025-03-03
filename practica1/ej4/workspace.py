@@ -25,7 +25,7 @@ def main():
     print("\nRecogiendo bicicletas:")
     usuario1.RecogerBicicleta(estacion1)  # Usuario 1 recoge una bicicleta de la estación 1
     usuario2.RecogerBicicleta(estacion2)  # Usuario 2 recoge una bicicleta de la estación 2
-    
+        
     # devolver las bicicletas después de un tiempo de uso
     print("\nDevolviendo las bicicletas:")
     tiempo_uso_juan = 40  
