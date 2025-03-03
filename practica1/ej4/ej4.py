@@ -73,6 +73,7 @@ class Usuario():
         self.abono = abono
         print(f"Abono {abono.__class__.__name__} registrado correctamente.")
 
+    #!Quitar
     def RecogerBicicleta(self, estacion):
         if self.uso_bici:
             print("Ya tienes una bicicleta en uso.")
@@ -109,9 +110,7 @@ class Estacion():
         self.capacidad = capacidad
         self.bicicletas_disponibles = bicicletas_disponibles
         self.estacionamientos_libres = estacionamientos_libres
-    """"
-    Deberia dejar los metodos usar y recoger bicicleta en una unica clase??
-    """
+   
     def usarBicicleta(self, usuario):
         if self.bicicletas_disponibles > 0 and not usuario.uso_bici:
             self.bicicletas_disponibles -= 1
