@@ -33,6 +33,7 @@ class LoteMateriaPrima:
         return self._codigo
 
     # Setters
+    #FIXME: Convertir estados es retornadores de booleanos
     def _nuevaImagen(self, imagen):
         self.imagenes.append(imagen)
 
@@ -52,6 +53,7 @@ class LoteMateriaPrima:
     def setEstado(self, estado):
         self._estado = estado
 
+    #! Convertir en detonantes
     def avanzar(self, fecha_hora):
         self._estado.avanzar(fecha_hora)
 
