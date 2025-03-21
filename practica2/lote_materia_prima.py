@@ -33,12 +33,13 @@ class LoteMateriaPrima:
         return self._codigo
 
     # Setters
-    #FIXME: Convertir estados es retornadores de booleanos
-    def _nuevaImagen(self, imagen):
-        self.imagenes.append(imagen)
+    def setPesoBruto(self, peso_bruto):
+        if self._estado.infoBaseModificable():
+            self._peso_bruto = peso_bruto
 
-    def _nuevoResultado(self, resultado):
-        self.resultados.append(resultado)
+    def setPesoTara(self, peso_tara):
+        if self._estado.infoBaseModificable():
+            self._peso_tara = peso_tara
 
     def registrarEstado(self):
         self.historial_estados.append(self._estado)
@@ -53,15 +54,22 @@ class LoteMateriaPrima:
     def setEstado(self, estado):
         self._estado = estado
 
-    #! Convertir en detonantes
-    def avanzar(self, fecha_hora):
-        self._estado.avanzar(fecha_hora)
+    def finalizaRegistroImagenes(self):
+        self._estado.finalizaRegistroImagenes()
 
-    def retroceder(self, fecha_hora):
-        self._estado.retroceder(fecha_hora)
+    def finalizaRegistroResultados(self):
+        self._estado.finalizaRegistroResultados()
+
+    def malaCalidadImagenes(self):
+        self._estado.malaCalidadImagenes()
+
+    def asignarALoteProduccion(self, lote_produccion):
+        self._estado.asignarALoteProduccion(lote_produccion)
 
     def registrarImagen(self, imagen):
-        self._estado.registrarImagen(imagen)
+        if self._estado.registrarImagen(imagen):
+            self.imagenes.append(imagen)
 
     def registrarResultado(self, resultado):
-        self._estado.asignarResultado(resultado)
+        if self._estado.asignarResultado(resultado):
+            self.resultados.append(resultado)

@@ -1,61 +1,82 @@
 from abc import ABC, abstractmethod
+import datetime
 
 class EstadoLoteMateriaPrima(ABC):
     def __init__(self, lote_materia_prima, fecha_hora):
-        self._lmp = lote_materia_prima
+        self._lote_materia_prima = lote_materia_prima
         self._fecha_hora = fecha_hora
 
     def getFechaHora(self):
         return self._fecha_hora
 
+    #* Cambio de avance y retroceso a lista de detonantes específicos
+    #? Motivo: escalabilidad
+    # @abstractmethod
+    # def avanzar(self):
+    #     pass
+
+    # @abstractmethod
+    # def retroceder(self):
+    #     pass
+
     @abstractmethod
-    def avanzar(self):
+    def finalizaRegistroImagenes(self):
         pass
 
     @abstractmethod
-    def retroceder(self):
+    def finalizaRegistroResultados(self):
+        pass
+
+    @abstractmethod
+    def malaCalidadImagenes(self):
         pass
 
     @abstractmethod
     def registrarImagen(self, imagen):
-        pass
+        return False
 
     @abstractmethod
     def asignarResultado(self, resultado):
-        pass
+        return False
 
     @abstractmethod
     def asignarALoteProduccion(self, lote):
         pass
+
+    @abstractmethod
+    def infoBaseModificable(self):
+        return False
 
 class Ingresado(EstadoLoteMateriaPrima):
-    def avanzar(self, _fecha_hora):
-        self._lmp.registrarEstado()
-        self._lmp.setEstado(EnAnalisis(self._lmp, _fecha_hora))
+    def finalizaRegistroImagenes(self):
+        self._lote_materia_prima.registrarEstado()
+        self._lote_materia_prima.setEstado(EnAnalisis(self._lote_materia_prima, datetime.now()))
 
     def registrarImagen(self, imagen):
-        self._lmp._nuevaImagen(imagen)
+        return True
 
-    # Setter controllers
+    def infoBaseModificable(self):
+        return True
 
 class EnAnalisis(EstadoLoteMateriaPrima):
-    def avanzar(self, _fecha_hora):
-        self._lmp.registrarEstado()
-        self._lmp.setEstado(Analizado(self._lmp, _fecha_hora))
+    def finalizaRegistroResultados(self):
+        self._lote_materia_prima.registrarEstado()
+        self._lote_materia_prima.setEstado(Analizado(self._lote_materia_prima, datetime.now()))
+
+    def malaCalidadImagenes(self):
+        self._lote_materia_prima.registrarEstado()
+        self._lote_materia_prima.setEstado(Ingresado(self._lote_materia_prima, datetime.now()))
 
     def asignarResultado(self, resultado):
-        self._lmp._nuevoResultado(resultado)
+        return True
 
 class Analizado(EstadoLoteMateriaPrima):
-    def avanzar(self, _fecha_hora):
-        self._lmp.registrarEstado()
-        self._lmp.setEstado(EnProduccion(self._lmp, _fecha_hora))
-
     def asignarALoteProduccion(self, lote):
-        #lote._nuevoLoteMateriaPrima(self._lmp)
-        pass
+        #* lote._nuevoLoteMateriaPrima(self._lote_materia_prima)
+        self._lote_materia_prima.registrarEstado()
+        self._lote_materia_prima.setEstado(EnProduccion(self._lote_materia_prima, datetime.now()))
 
 class EnProduccion(EstadoLoteMateriaPrima):
     def retroceder(self, _fecha_hora):
-        self._lmp.registrarEstado()
-        self._lmp.setEstado(Analizado(self._lmp, _fecha_hora))
+        self._lote_materia_prima.registrarEstado()
+        self._lote_materia_prima.setEstado(Analizado(self._lote_materia_prima, _fecha_hora))
