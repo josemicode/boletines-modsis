@@ -46,7 +46,7 @@ class AnalizadorMadurez(AnalizadorImagen):
     def analizarAceite(self, aceite):
         return {
             "tipo_analisis": "madurez",
-            "nivel_madurez": 85,  # Ejemplo
+            "nivel_madurez": 85,  
             "acido_oleico": 75.3,
             "indice_grasa": 18.2
         }
