@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from datos_analisis import AnalisisImagen, DatoAnalisis
 
 class AnalizadorImagen(ABC):
     def __init__(self, nombre):
@@ -43,17 +44,30 @@ class AnalizadorMadurez(AnalizadorImagen):
     def __init__(self):
         super().__init__("Analizador de Madurez")
 
+    # def analizarAceite(self, aceite):
+    #     return {
+    #         "tipo_analisis": "madurez",
+    #         "nivel_madurez": 85,  
+    #         "acido_oleico": 75.3,
+    #         "indice_grasa": 18.2
+    #     }
+
     def analizarAceite(self, aceite):
-        return {
-            "tipo_analisis": "madurez",
-            "nivel_madurez": 85,  
-            "acido_oleico": 75.3,
-            "indice_grasa": 18.2
-        }
+        d1 = DatoAnalisis("nivel_madurez", 85)
+        d2 = DatoAnalisis("acido_oleico", 75.3)
+        d3 = DatoAnalisis("indice_grasa", 18.2)
+        AnalisisImagen("madurez", [d1, d2, d3])
+
+    # def analizarOliva(self, oliva):
+    #     return {
+    #         "tipo_analisis": "madurez",
+    #         "estado_madurez": "envero",
+    #         "firmeza_piel": 6.5
+    #     }
 
     def analizarOliva(self, oliva):
-        return {
-            "tipo_analisis": "madurez",
-            "estado_madurez": "envero",
-            "firmeza_piel": 6.5
-        }
+        d1 = DatoAnalisis("estado_madurez", "envero")
+        d2 = DatoAnalisis("firmeza_piel", 6.5)
+        AnalisisImagen("madurez", [d1, d2])
+
+#? Cuestion: es realmente necesario pasar el objeto aceite/oliva a los métodos de analizarAceite/analizarOliva? Si despues hace falta usarlo lo entiendo, pero si no, no seria mejor no pasar nada?
