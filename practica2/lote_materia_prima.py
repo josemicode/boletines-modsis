@@ -9,7 +9,7 @@ class LoteMateriaPrima:
         self._productor = productor
         self._fecha_cosecha = fecha_cosecha
         self._llegada_planta = llegada_planta
-        self._codigo = self.codegen()
+        self._codigo = self._codeGen()
         self._peso_bruto = None
         self._peso_tara = None
         #self._producto = None
@@ -44,8 +44,8 @@ class LoteMateriaPrima:
     def registrarEstado(self):
         self.historial_estados.append(self._estado)
 
-    # Code gen
-    def codegen(self):
+    # Code generation
+    def _codeGen(self):
         for i in range(24):
             res += str(random.randint(0, 9))
         return res
