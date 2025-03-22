@@ -56,7 +56,7 @@ class AnalizadorMadurez(AnalizadorImagen):
         d1 = DatoAnalisis("nivel_madurez", 85)
         d2 = DatoAnalisis("acido_oleico", 75.3)
         d3 = DatoAnalisis("indice_grasa", 18.2)
-        AnalisisImagen("madurez", [d1, d2, d3])
+        return AnalisisImagen("madurez", [d1, d2, d3])
 
     # def analizarOliva(self, oliva):
     #     return {
@@ -68,6 +68,6 @@ class AnalizadorMadurez(AnalizadorImagen):
     def analizarOliva(self, oliva):
         d1 = DatoAnalisis("estado_madurez", "envero")
         d2 = DatoAnalisis("firmeza_piel", 6.5)
-        AnalisisImagen("madurez", [d1, d2])
+        return AnalisisImagen("madurez", [d1, d2])
 
 #? Cuestion: es realmente necesario pasar el objeto aceite/oliva a los métodos de analizarAceite/analizarOliva? Si despues hace falta usarlo lo entiendo, pero si no, no seria mejor no pasar nada?
