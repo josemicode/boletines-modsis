@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36" version="26.1.1">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="2501" dy="1915" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2796" dy="2047" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -157,7 +157,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="Jo_DFckwGyOfchOZIEku-162" value="Aceite" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="144" y="980" width="270" height="470" as="geometry">
+          <mxGeometry x="107" y="980" width="270" height="470" as="geometry">
             <mxRectangle x="190" y="740" width="70" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -171,7 +171,7 @@
           <mxGeometry y="178" width="270" height="292" as="geometry" />
         </mxCell>
         <mxCell id="Jo_DFckwGyOfchOZIEku-166" value="OlivaDeMesa" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="520" y="980" width="290" height="470" as="geometry" />
+          <mxGeometry x="483" y="980" width="290" height="470" as="geometry" />
         </mxCell>
         <mxCell id="Jo_DFckwGyOfchOZIEku-167" value="&lt;div&gt;- uniformidad_color: UniformidadColor&lt;/div&gt;&lt;div&gt;- tamano_promedio: float&lt;/div&gt;&lt;div&gt;- desvio_tamano: float&lt;/div&gt;&lt;div&gt;- perfil_sabor: PerfilSabor&lt;/div&gt;&lt;div&gt;- proceso_curado: ProcesoCurado&lt;/div&gt;&lt;div&gt;- contenido_sal: float&lt;/div&gt;&lt;div&gt;- porcentaje_defectos_visuales: float&lt;/div&gt;&lt;div&gt;- ph: float&lt;/div&gt;&lt;div&gt;- puntaje: float&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="Jo_DFckwGyOfchOZIEku-166" vertex="1">
           <mxGeometry y="26" width="290" height="144" as="geometry" />
@@ -316,20 +316,20 @@
         </mxCell>
         <mxCell id="Jo_DFckwGyOfchOZIEku-213" value="" style="endArrow=none;html=1;rounded=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="279.66" y="980" as="sourcePoint" />
-            <mxPoint x="280" y="957" as="targetPoint" />
+            <mxPoint x="242.66000000000003" y="980" as="sourcePoint" />
+            <mxPoint x="243" y="957" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="Jo_DFckwGyOfchOZIEku-214" value="" style="endArrow=none;html=1;rounded=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="670" y="980" as="sourcePoint" />
-            <mxPoint x="670" y="957" as="targetPoint" />
+            <mxPoint x="633" y="980" as="sourcePoint" />
+            <mxPoint x="633" y="957" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="Jo_DFckwGyOfchOZIEku-215" value="" style="endArrow=none;html=1;rounded=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="670" y="957" as="sourcePoint" />
-            <mxPoint x="280" y="957" as="targetPoint" />
+            <mxPoint x="633" y="957" as="sourcePoint" />
+            <mxPoint x="243" y="957" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="Jo_DFckwGyOfchOZIEku-216" value="EnProduccion" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
@@ -465,7 +465,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="0U6JYEPLkCzUKluf5LQZ-0" value="DefectoSensorial" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="200" y="1520" width="160" height="120" as="geometry" />
+          <mxGeometry x="162" y="1520" width="160" height="120" as="geometry" />
         </mxCell>
         <mxCell id="0U6JYEPLkCzUKluf5LQZ-1" value="- comentario: str&lt;div&gt;- gravedad: int&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="0U6JYEPLkCzUKluf5LQZ-0">
           <mxGeometry y="26" width="160" height="44" as="geometry" />
