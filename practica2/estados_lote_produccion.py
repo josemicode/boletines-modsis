@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-import datetime
+from datetime import datetime
 
 class EstadoLoteProduccion(ABC):
     def __init__(self, lote_produccion, fecha_hora):
@@ -19,15 +19,15 @@ class EstadoLoteProduccion(ABC):
 
     @abstractmethod
     def quitarLoteMateriaPrima(self):
-        return False
+        pass
 
     @abstractmethod
     def nuevoLoteMateriaPrima(self):
-        return False
+        pass
 
     @abstractmethod
-    def registrarProducto(self):
-        return False
+    def registrarProductos(self):
+        pass
 
     # @abstractmethod
     # def generarReporte(self):
@@ -41,25 +41,55 @@ class EnArmado(EstadoLoteProduccion):
         return True
     
     def nuevoLoteMateriaPrima(self):
-        True
+        return True
     
     def finalizaArmado(self):
         self._lote_produccion.registrarEstado()
         self._lote_produccion.setEstado(EnProduccion(self._lote_produccion, datetime.now()))
 
+    def finalizaProduccion(self):
+        pass
+
+    def registrarProductos(self):
+        return False
+
 class EnProduccion(EstadoLoteProduccion):
     def __init__(self, lote_produccion, fecha_hora):
         super().__init__(lote_produccion, fecha_hora)
+
+    def quitarLoteMateriaPrima(self):
+        return False
+
+    def nuevoLoteMateriaPrima(self):
+        return False
+
+    def finalizaArmado(self):
+        pass
 
     def finalizaProduccion(self):
         self._lote_produccion.registrarEstado()
         self._lote_produccion.setEstado(Finalizado(self._lote_produccion, datetime.now()))
 
+    def registrarProductos(self):
+        return False
+
 class Finalizado(EstadoLoteProduccion):
     def __init__(self, lote_produccion, fecha_hora):
         super().__init__(lote_produccion, fecha_hora)
 
-    def registrarProducto(self):
+    def quitarLoteMateriaPrima(self):
+        return False
+
+    def nuevoLoteMateriaPrima(self):
+        return False
+
+    def finalizaArmado(self):
+        pass
+
+    def finalizaProduccion(self):
+        pass
+
+    def registrarProductos(self):
         return True
     
     # def generarReporte(self):

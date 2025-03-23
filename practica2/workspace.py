@@ -1,9 +1,12 @@
 from productor import Productor
 from lote_materia_prima import LoteMateriaPrima
+from lote_produccion import LoteProduccion
+from estados_lote_produccion import *
 from productos import Producto, Oliva, Aceite
 from imagen import Imagen
 from analizadores_imagen import *
-from enumeraciones import UniformidadColor, PerfilSabor, ProcesoCurado
+from generador_reportes import *
+from enumeraciones import UniformidadColor, PerfilSabor, ProcesoCurado, Calidad
 from datetime import date, datetime
 #import uuid
 
@@ -52,6 +55,35 @@ def main():
     lmp1.finalizaRegistroResultados()
 
     #* Analizado
+    #* Lote de Produccion
+    lprod1 = LoteProduccion(datetime.now(), 100001)
+    lmp1.asignarALoteProduccion(lprod1)
+    lprod1.quitarLoteMateriaPrima(lmp1)
+    lmp1.asignarALoteProduccion(lprod1)
+
+    # if isinstance(lprod1._estado, EnArmado):
+    #     print("-----")
+
+    #* En Produccion, En Armado
+    lprod1.finalizaArmado()
+
+    #* Lote de Produccion en Produccion
+    lprod1.finalizaProduccion()
+
+    #* Finalizado
+    lprod1.registrarProductos()
+    # print(len(lprod1.getProductosObtenidos()))
+    oliva2 = lprod1.getProductosObtenidos()[0]
+    oliva2.setCantidadProducida(60)
+    oliva2.setUnidadCantidad("kg")
+    oliva2.calcularPuntaje()
+    print("Puntaje del Producto: ", oliva2.getPuntaje())
+    print("Calidad del Producto: ", oliva2.getCalidad().value)
+
+    #* Generacion Reporte JSON
+    generador1 = GeneradorReportesJSON()
+    (reportes_materias_primas, reportes_productos) = generador1.generarReportes(lprod1)
+    print(reportes_materias_primas, "\n\n", reportes_productos)
 
 if __name__ == "__main__":
     main()

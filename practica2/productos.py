@@ -8,7 +8,7 @@ class Producto(ABC):
         self.unidad_cantidad = ""
         self.lugar_almacenaje = None # str
         self.codigo = self._codeGen()
-        self.puntaje = None # float
+        self.puntaje = 0.0
         self.calidad = None # <<Calidad>>
 
     def _codeGen(self):
@@ -32,6 +32,9 @@ class Producto(ABC):
 
     def getPuntaje(self):
         return self.puntaje
+    
+    def getCalidad(self):
+        return self.calidad
 
     def setCantidadProducida(self, cantidad):
         self.cantidad_producida = cantidad
@@ -145,7 +148,6 @@ class Oliva(Producto):
         self.contenido_sal = None # float
         self.porcentaje_defectos_visuales = None # float
         self.ph = None # float
-        self.puntaje = None # float
 
     #Getters
     def getUniformidadColor(self):

@@ -84,3 +84,6 @@ class LoteMateriaPrima:
     def registrarResultado(self, resultado):
         if self._estado.asignarResultado():
             self.resultados.append(resultado)
+
+    def retroceder(self):
+        self._estado.retroceder()

@@ -33,11 +33,11 @@ class EstadoLoteMateriaPrima(ABC):
 
     @abstractmethod
     def registrarImagen(self):
-        return False
+        pass
 
     @abstractmethod
     def asignarResultado(self):
-        return False
+        pass
 
     @abstractmethod
     def asignarALoteProduccion(self, lote):
@@ -45,7 +45,7 @@ class EstadoLoteMateriaPrima(ABC):
 
     @abstractmethod
     def infoBaseModificable(self):
-        return False
+        pass
 
 class Ingresado(EstadoLoteMateriaPrima):
     def __init__(self, lote_materia_prima, fecha_hora):
@@ -126,7 +126,7 @@ class Analizado(EstadoLoteMateriaPrima):
         pass
 
     def asignarALoteProduccion(self, lote):
-        lote.registrarLoteMateriaPrima(self._lote_materia_prima)
+        lote.nuevoLoteMateriaPrima(self._lote_materia_prima)
         self._lote_materia_prima.registrarEstado()
         self._lote_materia_prima.setEstado(EnProduccion(self._lote_materia_prima, datetime.now()))
 
@@ -164,6 +164,6 @@ class EnProduccion(EstadoLoteMateriaPrima):
     def asignarResultado(self):
         return False
 
-    def retroceder(self, _fecha_hora):
+    def retroceder(self):
         self._lote_materia_prima.registrarEstado()
-        self._lote_materia_prima.setEstado(Analizado(self._lote_materia_prima, _fecha_hora))
+        self._lote_materia_prima.setEstado(Analizado(self._lote_materia_prima, datetime.now()))

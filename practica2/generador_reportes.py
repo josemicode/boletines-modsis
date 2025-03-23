@@ -31,7 +31,7 @@ class GeneradorReportes(ABC):
 class GeneradorReportesPDF(GeneradorReportes):
     def generarReporteMateriaPrima(self, materia_prima):
     # Los lotes de materia prima incluidos en el lote de producción (indicando número de lote, productor, fecha de cosecha, fecha y hora de ingreso a planta, y peso neto)
-        return f"Reporte de materia prima:\n - Lote de produccion: {materia_prima.getNumLote()}\n - Productor: {materia_prima.getProductor().toString()}\n - Fecha de cosecha: {materia_prima.getFechaCosecha()}\n - Fecha y hora de ingreso a planta: {materia_prima.getLlegadaPlanta()}\n - Peso neto: {materia_prima.getPesoTara()}"
+        return f"Reporte de materia prima:\n - Lote de produccion: {materia_prima.getNumLote()}\n - Productor: {materia_prima.getProductor().toString()}\n - Fecha de cosecha: {str(materia_prima.getFechaCosecha())}\n - Fecha y hora de ingreso a planta: {str(materia_prima.getLlegadaPlanta())}\n - Peso neto: {materia_prima.getPesoTara()}"
 
     def generarReporteProducto(self, producto):
     # El/los productos obtenidos del proceso de producción, indicando:
@@ -39,18 +39,19 @@ class GeneradorReportesPDF(GeneradorReportes):
     # - Cantidad producida (cantidad y unidad)
     # - Lugar de almacenaje (que incluye número de galpón y número de sala)
     # - Calidad (ALTA, MEDIA, BAJA)
-        return f"Reporte de producto:\n - Numero de seguimiento interno: {producto.getCodigo()}\n - Cantidad producida: {producto.getCantidadProducida()} {producto.getUnidadCantidad()}\n - Lugar de almacenaje: {producto.getLugarAlmacenaje()}\n - Calidad: {producto.getCalidad()}"
+        return f"Reporte de producto:\n - Numero de seguimiento interno: {producto.getCodigo()}\n - Cantidad producida: {producto.getCantidadProducida()} {producto.getUnidadCantidad()}\n - Lugar de almacenaje: {producto.getLugarAlmacenaje()}\n - Calidad: {producto.getCalidad().value}"
 
 class GeneradorReportesJSON(GeneradorReportes):
     def generarReporteMateriaPrima(self, materia_prima):
         datos_materia_prima = {}
-        datos_materia_prima["lote_produccion"] = materia_prima.getNumLote()
+        datos_materia_prima["lote_produccion"] = materia_prima.getCodigo()
         datos_materia_prima["productor"] = materia_prima.getProductor().toString()
-        datos_materia_prima["fecha_cosecha"] = materia_prima.getFechaCosecha()
-        datos_materia_prima["fecha_ingreso_planta"] = materia_prima.getLlegadaPlanta()
+        datos_materia_prima["fecha_cosecha"] = str(materia_prima.getFechaCosecha())
+        datos_materia_prima["fecha_ingreso_planta"] = str(materia_prima.getLlegadaPlanta())
         datos_materia_prima["peso_neto"] = materia_prima.getPesoTara()
         with open("reporte_materia_prima.json", "w", encoding="utf-8") as f:
             json.dump(datos_materia_prima, f, indent=4, ensure_ascii=False)
+        return datos_materia_prima
     
     def generarReporteProducto(self, producto):
         datos_producto = {}
@@ -58,6 +59,7 @@ class GeneradorReportesJSON(GeneradorReportes):
         datos_producto["cantidad_producida"] = producto.getCantidadProducida()
         datos_producto["unidad_cantidad"] = producto.getUnidadCantidad()
         datos_producto["lugar_almacenaje"] = producto.getLugarAlmacenaje()
-        datos_producto["calidad"] = producto.getCalidad()
+        datos_producto["calidad"] = producto.getCalidad().value
         with open("reporte_producto.json", "w", encoding="utf-8") as f:
             json.dump(datos_producto, f, indent=4, ensure_ascii=False)
+        return datos_producto

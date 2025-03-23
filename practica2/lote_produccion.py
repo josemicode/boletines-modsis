@@ -19,12 +19,6 @@ class LoteProduccion:
     def getProductosObtenidos(self):
         return self.productos_obtenidos
 
-    def nuevoLoteMateriaPrima(self, lote):
-        self.lotes_materia_prima.append(lote)
-
-    def nuevoProductoObtenido(self, producto):
-        self.productos_obtenidos.append(producto)
-
     # Setters
     def setEstado(self, estado):
         self._estado = estado
@@ -45,17 +39,23 @@ class LoteProduccion:
             if(lote.getProducto() != self.lotes_materia_prima[0].getProducto()):
                 return False
 
+        # print("pre-append")
         if self._estado.nuevoLoteMateriaPrima():
+            # print("append")
             self.lotes_materia_prima.append(lote)
             return True
 
     def quitarLoteMateriaPrima(self, lote):
         if self._estado.quitarLoteMateriaPrima():
             self.lotes_materia_prima = list(filter(lambda aux: (aux != lote), self.lotes_materia_prima))
+            lote.retroceder()
 
-    def registrarProducto(self, producto):
-        if self._estado.registrarProducto():
-            self.productos_obtenidos.append(producto)
+    def registrarProductos(self):
+        if self._estado.registrarProductos():
+            # print("bbb")
+            for lote in self.lotes_materia_prima:
+                # print("aaa")
+                self.productos_obtenidos.append(lote.getProducto())
     
     #* Toma un GeneradorReporte y llama a su metodo generarReportes()
     #? En verdad, esto no le corresponde a LoteProduccion, sino a un controlador (sistema o main)
