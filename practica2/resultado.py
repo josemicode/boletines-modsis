@@ -16,3 +16,5 @@ class Resultado:
     
     def getAtributos(self):
         return self._atributos
+
+#! Clase Posiblemente obsoleta

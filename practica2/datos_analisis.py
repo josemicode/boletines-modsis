@@ -4,7 +4,7 @@ class AnalisisImagen:
     # datos_analisis: List[DatoAnalisis]
     def __init__(self, tipo_analisis, datos_analisis):
         self._tipo_analisis = tipo_analisis
-        self._analisis = []
+        self._analisis = datos_analisis
     
     def getTipoAnalisis(self):
         return self._tipo_analisis

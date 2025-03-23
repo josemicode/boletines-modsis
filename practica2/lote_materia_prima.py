@@ -5,8 +5,9 @@ class LoteMateriaPrima:
     # productor: Productor
     # fecha_cosecha: date
     # llegada_planta: datetime
-    def __init__(self, productor, fecha_cosecha, llegada_planta):
+    def __init__(self, productor, producto_objetivo, fecha_cosecha, llegada_planta):
         self._productor = productor
+        self._producto = producto_objetivo
         self._fecha_cosecha = fecha_cosecha
         self._llegada_planta = llegada_planta
         self._codigo = self._codeGen()
@@ -22,6 +23,9 @@ class LoteMateriaPrima:
     # Getters
     def getProductor(self):
         return self._productor
+
+    def getProducto(self):
+        return self._producto
 
     def getFechaCosecha(self):
         return self._fecha_cosecha
