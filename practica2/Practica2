@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36" version="26.1.1">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="1981" dy="1683" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2501" dy="1915" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -157,30 +157,30 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="Jo_DFckwGyOfchOZIEku-162" value="Aceite" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="200" y="980" width="160" height="104" as="geometry">
+          <mxGeometry x="144" y="980" width="270" height="470" as="geometry">
             <mxRectangle x="190" y="740" width="70" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Jo_DFckwGyOfchOZIEku-163" value="- grado_acidez: float&lt;div&gt;- variedad: str&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="Jo_DFckwGyOfchOZIEku-162" vertex="1">
-          <mxGeometry y="26" width="160" height="44" as="geometry" />
+        <mxCell id="Jo_DFckwGyOfchOZIEku-163" value="&lt;div&gt;- estrategia_tipo_aceite: EstrategiaTipoAceite&lt;/div&gt;&lt;div&gt;- metodo_extraccion: MetodoExtraccion&lt;/div&gt;&lt;div&gt;- acidez: float&lt;/div&gt;&lt;div&gt;- cantidad_polifenoles: int&lt;/div&gt;&lt;div&gt;- color: str&lt;/div&gt;&lt;div&gt;- defectos_sensoriales: List&amp;lt;DefectoSensorial&amp;gt;&lt;/div&gt;&lt;div&gt;- perfil_frutado: str&lt;/div&gt;&lt;div&gt;- nivel_frutado: NivelFrutado&lt;/div&gt;&lt;div&gt;- resistencia_termica: ResistenciaTermica&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="Jo_DFckwGyOfchOZIEku-162" vertex="1">
+          <mxGeometry y="26" width="270" height="144" as="geometry" />
         </mxCell>
         <mxCell id="Jo_DFckwGyOfchOZIEku-164" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="Jo_DFckwGyOfchOZIEku-162" vertex="1">
-          <mxGeometry y="70" width="160" height="8" as="geometry" />
+          <mxGeometry y="170" width="270" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="Jo_DFckwGyOfchOZIEku-165" value="+ method(type): type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="Jo_DFckwGyOfchOZIEku-162" vertex="1">
-          <mxGeometry y="78" width="160" height="26" as="geometry" />
+        <mxCell id="Jo_DFckwGyOfchOZIEku-165" value="&lt;div&gt;+ setEstrategiaTipoAceite(estrategia): void&lt;/div&gt;&lt;div&gt;+ setMetodoExtraccion(metodo): void&lt;/div&gt;&lt;div&gt;+ setAcidez(acidez): void&lt;/div&gt;&lt;div&gt;+ setCantidadPolifenoles(cantidad): void&lt;/div&gt;&lt;div&gt;+ setColor(color): void&lt;/div&gt;&lt;div&gt;+ nuevoDefectoSensorial(defecto): void&lt;/div&gt;&lt;div&gt;+ setPerfilFrutado(perfil): void&lt;/div&gt;&lt;div&gt;+ setNivelFrutado(nivel): void&lt;/div&gt;&lt;div&gt;+ setResistenciaTermica(resistencia): void&lt;/div&gt;&lt;div&gt;+ aceptarAnalizador(analizador): bool&lt;/div&gt;&lt;div&gt;+ getMetodoExtraccion():&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;MetodoExtraccion&lt;/span&gt;&lt;/div&gt;&lt;div&gt;+ getAcidez(): float&lt;/div&gt;&lt;div&gt;+ getCantidadPolifenoles(): int&lt;/div&gt;&lt;div&gt;+ getColor(): str&lt;/div&gt;&lt;div&gt;+ getDefectosSensoriales():&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;DefectoSensorial&lt;/span&gt;&lt;/div&gt;&lt;div&gt;+ getPerfilFrutado(): str&lt;/div&gt;&lt;div&gt;+ getNivelFrutado(): NivelFrutado&lt;/div&gt;&lt;div&gt;+ getResistenciaTermica(): ResistenciaTermica&lt;/div&gt;&lt;div&gt;+ calcularPuntaje(): void&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="Jo_DFckwGyOfchOZIEku-162" vertex="1">
+          <mxGeometry y="178" width="270" height="292" as="geometry" />
         </mxCell>
         <mxCell id="Jo_DFckwGyOfchOZIEku-166" value="OlivaDeMesa" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="520" y="980" width="160" height="104" as="geometry" />
+          <mxGeometry x="520" y="980" width="290" height="470" as="geometry" />
         </mxCell>
-        <mxCell id="Jo_DFckwGyOfchOZIEku-167" value="- tamaño: float&lt;div&gt;- color: str&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="Jo_DFckwGyOfchOZIEku-166" vertex="1">
-          <mxGeometry y="26" width="160" height="44" as="geometry" />
+        <mxCell id="Jo_DFckwGyOfchOZIEku-167" value="&lt;div&gt;- uniformidad_color: UniformidadColor&lt;/div&gt;&lt;div&gt;- tamano_promedio: float&lt;/div&gt;&lt;div&gt;- desvio_tamano: float&lt;/div&gt;&lt;div&gt;- perfil_sabor: PerfilSabor&lt;/div&gt;&lt;div&gt;- proceso_curado: ProcesoCurado&lt;/div&gt;&lt;div&gt;- contenido_sal: float&lt;/div&gt;&lt;div&gt;- porcentaje_defectos_visuales: float&lt;/div&gt;&lt;div&gt;- ph: float&lt;/div&gt;&lt;div&gt;- puntaje: float&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="Jo_DFckwGyOfchOZIEku-166" vertex="1">
+          <mxGeometry y="26" width="290" height="144" as="geometry" />
         </mxCell>
         <mxCell id="Jo_DFckwGyOfchOZIEku-168" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="Jo_DFckwGyOfchOZIEku-166" vertex="1">
-          <mxGeometry y="70" width="160" height="8" as="geometry" />
+          <mxGeometry y="170" width="290" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="Jo_DFckwGyOfchOZIEku-169" value="+ method(type): type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="Jo_DFckwGyOfchOZIEku-166" vertex="1">
-          <mxGeometry y="78" width="160" height="26" as="geometry" />
+        <mxCell id="Jo_DFckwGyOfchOZIEku-169" value="&lt;div&gt;+ getUniformidadColor():&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;UniformidadColor&lt;/span&gt;&lt;/div&gt;&lt;div&gt;+ getTamanoPromedio(): float&lt;/div&gt;&lt;div&gt;+ getDesvioTamano(): float&lt;/div&gt;&lt;div&gt;+ getPerfilSabor(): PerfilSabor&lt;/div&gt;&lt;div&gt;+ getProcesoCurado(): ProcesoCurado&lt;/div&gt;&lt;div&gt;+ getContenidoSal(): float&lt;/div&gt;&lt;div&gt;+ getPorcentajeDefectosVisuales(): float&lt;/div&gt;&lt;div&gt;+ getPh(): float&lt;/div&gt;&lt;div&gt;+ setUniformidadColor(uniformidad): void&lt;/div&gt;&lt;div&gt;+ setTamanoPromedio(tamano): void&lt;/div&gt;&lt;div&gt;+ setDesvioTamano(desvio): void&lt;/div&gt;&lt;div&gt;+ setPerfilSabor(perfil): void&lt;/div&gt;&lt;div&gt;+ setProcesoCurado(proceso): void&lt;/div&gt;&lt;div&gt;+ setContenidoSal(contenido): void&lt;/div&gt;&lt;div&gt;+ setPorcentajeDefectosVisuales(porcentaje): void&lt;/div&gt;&lt;div&gt;+ setPh(ph): void&lt;/div&gt;&lt;div&gt;+ aceptarAnalizador(analizador): bool&lt;/div&gt;&lt;div&gt;+ calcularPuntaje(): void&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="Jo_DFckwGyOfchOZIEku-166" vertex="1">
+          <mxGeometry y="178" width="290" height="292" as="geometry" />
         </mxCell>
         <mxCell id="Jo_DFckwGyOfchOZIEku-170" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" edge="1">
           <mxGeometry width="160" relative="1" as="geometry">
@@ -322,13 +322,13 @@
         </mxCell>
         <mxCell id="Jo_DFckwGyOfchOZIEku-214" value="" style="endArrow=none;html=1;rounded=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="610" y="980" as="sourcePoint" />
-            <mxPoint x="610" y="957" as="targetPoint" />
+            <mxPoint x="670" y="980" as="sourcePoint" />
+            <mxPoint x="670" y="957" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="Jo_DFckwGyOfchOZIEku-215" value="" style="endArrow=none;html=1;rounded=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="610" y="957" as="sourcePoint" />
+            <mxPoint x="670" y="957" as="sourcePoint" />
             <mxPoint x="280" y="957" as="targetPoint" />
           </mxGeometry>
         </mxCell>
@@ -465,7 +465,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="0U6JYEPLkCzUKluf5LQZ-0" value="DefectoSensorial" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="200" y="1310" width="160" height="120" as="geometry" />
+          <mxGeometry x="200" y="1520" width="160" height="120" as="geometry" />
         </mxCell>
         <mxCell id="0U6JYEPLkCzUKluf5LQZ-1" value="- comentario: str&lt;div&gt;- gravedad: int&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="0U6JYEPLkCzUKluf5LQZ-0">
           <mxGeometry y="26" width="160" height="44" as="geometry" />
