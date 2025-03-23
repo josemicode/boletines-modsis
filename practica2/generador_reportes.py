@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+import json
 
 class GeneradorReportes(ABC):
     #* Template Method
@@ -36,3 +37,24 @@ class GeneradorReportesPDF(GeneradorReportes):
     # - Lugar de almacenaje (que incluye número de galpón y número de sala)
     # - Calidad (ALTA, MEDIA, BAJA)
         return f"Reporte de producto:\n - Numero de seguimiento interno: {producto.getCodigo()}\n - Cantidad producida: {producto.getCantidadProducida()} {producto.getUnidadCantidad()}\n - Lugar de almacenaje: {producto.getLugarAlmacenaje()}\n - Calidad: {producto.getCalidad()}"
+
+class GeneradorReportesJSON(GeneradorReportes):
+    def generarReporteMateriaPrima(self, materia_prima):
+        datos_materia_prima = {}
+        datos_materia_prima["lote_produccion"] = materia_prima.getNumLote()
+        datos_materia_prima["productor"] = materia_prima.getProductor().toString()
+        datos_materia_prima["fecha_cosecha"] = materia_prima.getFechaCosecha()
+        datos_materia_prima["fecha_ingreso_planta"] = materia_prima.getLlegadaPlanta()
+        datos_materia_prima["peso_neto"] = materia_prima.getPesoTara()
+        with open("reporte_materia_prima.json", "w", encoding="utf-8") as f:
+            json.dump(datos_materia_prima, f, indent=4, ensure_ascii=False)
+    
+    def generarReporteProducto(self, producto):
+        datos_producto = {}
+        datos_producto["codigo"] = producto.getCodigo()
+        datos_producto["cantidad_producida"] = producto.getCantidadProducida()
+        datos_producto["unidad_cantidad"] = producto.getUnidadCantidad()
+        datos_producto["lugar_almacenaje"] = producto.getLugarAlmacenaje()
+        datos_producto["calidad"] = producto.getCalidad()
+        with open("reporte_producto.json", "w", encoding="utf-8") as f:
+            json.dump(datos_producto, f, indent=4, ensure_ascii=False)
