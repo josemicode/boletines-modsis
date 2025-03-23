@@ -63,3 +63,5 @@ class LoteProduccion:
     #     if self._estado.generarReporte():
     #         generador_reporte.generarReportes(self.lotes_materia_prima, self.productos_obtenidos)
     #     return False
+    
+    '''Entonces creamos una clase sistema que lo desarrolle?? Mira el diagrama que he hecho cambios y ves donde la podemos implementar'''
