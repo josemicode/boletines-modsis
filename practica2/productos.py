@@ -50,6 +50,7 @@ class Producto(ABC):
 class Aceite(Producto):
     def __init__(self):
         super().__init__()
+        self.estrategia_tipo_aceite = None # EstrategiaTipoAceite
         self.metodo_extraccion = None # <<MetodoExtraccion>>
         self.acidez = None # float
         self.cantidad_polifenoles = None # int
@@ -60,6 +61,9 @@ class Aceite(Producto):
         self.puntaje = None # float
     
     # Setters
+    def setEstrategiaTipoAceite(self, estrategia):
+        self.estrategia_tipo_aceite = estrategia
+
     def setMetodoExtraccion(self, metodo):
         self.metodo_extraccion = metodo
     
@@ -108,6 +112,9 @@ class Aceite(Producto):
 
     def getPuntaje(self):
         return self.puntaje
+
+    def calcularCalidad(self):
+        self.puntaje = self.estrategia_tipo_aceite.calcularPuntaje(self)
 
 
 class Oliva(Producto):
