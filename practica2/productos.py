@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-# from enumeraciones import MetodoExtraccion, NivelFrutado, UniformidadColor, PerfilSabor, ProcesoCurado
+from enumeraciones import MetodoExtraccion, NivelFrutado, UniformidadColor, PerfilSabor, ProcesoCurado, Calidad, ResistenciaTermica
 import random
 
 class Producto(ABC):
@@ -8,6 +8,7 @@ class Producto(ABC):
         self.unidad_cantidad = ""
         self.lugar_almacenaje = None # str
         self.codigo = self._codeGen()
+        self.puntaje = None # float
         self.calidad = None # <<Calidad>>
 
     def _codeGen(self):
@@ -28,6 +29,9 @@ class Producto(ABC):
     def getCodigo(self):
         return self.codigo
 
+    def getPuntaje(self):
+        return self.puntaje
+
     def setCantidadProducida(self, cantidad):
         self.cantidad_producida = cantidad
     
@@ -36,6 +40,14 @@ class Producto(ABC):
     
     def setLugarAlmacenaje(self, lugar):
         self.lugar_almacenaje = lugar
+
+    def calcularCalidad(self):
+        if self.puntaje > 8:
+            self.calidad = Calidad.ALTA
+        elif 5 <= self.puntaje <= 8:
+            self.calidad = Calidad.MEDIA
+        else:
+            self.calidad = Calidad.BAJA            
     
     @abstractmethod
     def aceptarAnalizador(self, analizador):
@@ -43,7 +55,7 @@ class Producto(ABC):
     #? Puntaje calculado aqui? Ya veremos...
 
     @abstractmethod
-    def calcularCalidad(self):
+    def calcularPuntaje(self):
         pass
 
 
@@ -58,7 +70,7 @@ class Aceite(Producto):
         self.defectos_sensoriales = [] # List[DefectoSensorial]
         self.perfil_frutado = None # str
         self.nivel_frutado = None # NivelFrutado
-        self.puntaje = None # float
+        self.resistencia_termica = None # <<ResistenciaTermica>>
     
     # Setters
     def setEstrategiaTipoAceite(self, estrategia):
@@ -85,6 +97,9 @@ class Aceite(Producto):
     def setNivelFrutado(self, nivel):
         self.nivel_frutado = nivel
     
+    def setResistenciaTermica(self, resistencia):
+        self.resistencia_termica = resistencia
+    
     def aceptarAnalizador(self, analizador):
         return analizador.analizarAceite(self)
 
@@ -109,12 +124,13 @@ class Aceite(Producto):
 
     def getNivelFrutado(self):
         return self.nivel_frutado
+    
+    def getResistenciaTermica(self):
+        return self.resistencia_termica
 
-    def getPuntaje(self):
-        return self.puntaje
-
-    def calcularCalidad(self):
+    def calcularPuntaje(self):
         self.puntaje = self.estrategia_tipo_aceite.calcularPuntaje(self)
+        self.calcularCalidad()
 
 
 class Oliva(Producto):
@@ -155,9 +171,6 @@ class Oliva(Producto):
     def getPh(self):
         return self.ph
 
-    def getPuntaje(self):
-        return self.puntaje
-    
     # Setters
     def setUniformidadColor(self, uniformidad):
         self.uniformidad_color = uniformidad
@@ -183,5 +196,44 @@ class Oliva(Producto):
     def setPh(self, ph):
         self.ph = ph
     
+    # Analizador
     def aceptarAnalizador(self, analizador):
         return analizador.analizarOliva(self)
+    
+    def calcularPuntaje(self):
+        if self.uniformidad_color == UniformidadColor.ALTA:
+            self.puntaje += 2
+        elif self.uniformidad_color == UniformidadColor.MEDIA:
+            self.puntaje += 1
+        else:
+            self.puntaje += 0
+        
+        if self.desvio_tamano < self.tamano_promedio/10:
+            self.puntaje += 2
+        elif self.desvio_tamano < self.tamano_promedio/20:
+            self.puntaje += 1
+        else:
+            self.puntaje += 0
+        
+        if 5.5 < self.contenido_sal < 6.5:
+            self.puntaje += 2
+        elif 4.5 < self.contenido_sal < 7:
+            self.puntaje += 1
+        else:
+            self.puntaje += 0
+        
+        if self.porcentaje_defectos_visuales < 5:
+            self.puntaje += 2
+        elif self.porcentaje_defectos_visuales < 15:
+            self.puntaje += 1
+        else:
+            self.puntaje += 0
+        
+        if 3.9 < self.ph < 4.1:
+            self.puntaje += 2
+        elif 3.7 < self.ph < 4.3:
+            self.puntaje += 1
+        else:
+            self.puntaje += 0
+        
+        self.calcularCalidad()

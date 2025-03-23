@@ -5,17 +5,24 @@ class MetodoExtraccion(Enum):
     PRENSADO = "Prensado En Frio"
     CENTRIFUGADO = "Centrifugado"
     REFINADO = "Refinado"
+    REFINADO_ALTO = "Refinado Alta Calidad"
     DISOLVENTE = "Con Disolvente"
+
+class ResistenciaTermica(Enum):
+    ALTA = "Muy Estable en Frituras"
+    ESTABLE = "Estable"
+    NINGUNA = "Inestable"
 
 class NivelFrutado(Enum):
     ALTO = "Nivel Frutado Alto"
     MEDIO = "Nivel Frutado Medio"
     BAJO = "Nivel Frutado Bajo"
+    NADA = "Sin Nivel Frutado"
 
 class UniformidadColor(Enum):
-    ALTO = "Uniformidad de Color Alta"
-    MEDIO = "Uniformidad de Color Media"
-    BAJO = "Uniformidad de Color Baja"
+    ALTA = "Uniformidad de Color Alta"
+    MEDIA = "Uniformidad de Color Media"
+    BAJA = "Uniformidad de Color Baja"
 
 class PerfilSabor(Enum):
     AMARGO = "Perfil de Sabor Amargo"
