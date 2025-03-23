@@ -25,8 +25,13 @@ class EstadoLoteProduccion(ABC):
     def nuevoLoteMateriaPrima(self):
         return False
 
+    @abstractmethod
     def registrarProducto(self):
         return False
+
+    # @abstractmethod
+    # def generarReporte(self):
+    #     return False
 
 class EnArmado(EstadoLoteProduccion):
     def __init__(self, lote_produccion, fecha_hora):
@@ -56,3 +61,6 @@ class Finalizado(EstadoLoteProduccion):
 
     def registrarProducto(self):
         return True
+    
+    # def generarReporte(self):
+    #     return True

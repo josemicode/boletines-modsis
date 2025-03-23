@@ -3,7 +3,10 @@ import json
 
 class GeneradorReportes(ABC):
     #* Template Method
-    def generarReportes(self, lista_materias_primas, lista_productos):
+    def generarReportes(self, lote_produccion):
+        lista_materias_primas = lote_produccion.getLotesMateriaPrima()
+        lista_productos = lote_produccion.getProductosObtenidos()
+
         lista_reportes_materias_primas = []
         lista_reportes_productos = []
 

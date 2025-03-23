@@ -56,3 +56,10 @@ class LoteProduccion:
     def registrarProducto(self, producto):
         if self._estado.registrarProducto():
             self.productos_obtenidos.append(producto)
+    
+    #* Toma un GeneradorReporte y llama a su metodo generarReportes()
+    #? En verdad, esto no le corresponde a LoteProduccion, sino a un controlador (sistema o main)
+    # def generarReporte(self, generador_reporte):
+    #     if self._estado.generarReporte():
+    #         generador_reporte.generarReportes(self.lotes_materia_prima, self.productos_obtenidos)
+    #     return False
