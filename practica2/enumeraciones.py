@@ -29,7 +29,7 @@ class PerfilSabor(Enum):
     SALADO = "Perfil de Sabor Salado"
     ACIDO = "Perfil de Sabor Acido"
 
-class ProcessoCurado(Enum):
+class ProcesoCurado(Enum):
     NATURAL = "Proceso de Curado Natural"
     SALMUERA = "Proceso de Curado en Salmuera"
     SOSA = "Proceso de Curado en Sosa Caustica"

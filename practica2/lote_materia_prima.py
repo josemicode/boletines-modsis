@@ -56,6 +56,7 @@ class LoteMateriaPrima:
 
     # Code generation
     def _codeGen(self):
+        res = ""
         for i in range(24):
             res += str(random.randint(0, 9))
         return res
@@ -77,9 +78,9 @@ class LoteMateriaPrima:
         self._estado.asignarALoteProduccion(lote_produccion)
 
     def registrarImagen(self, imagen):
-        if self._estado.registrarImagen(imagen):
+        if self._estado.registrarImagen():
             self.imagenes.append(imagen)
 
     def registrarResultado(self, resultado):
-        if self._estado.asignarResultado(resultado):
+        if self._estado.asignarResultado():
             self.resultados.append(resultado)

@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-import datetime
+from datetime import datetime
 
 class EstadoLoteMateriaPrima(ABC):
     def __init__(self, lote_materia_prima, fecha_hora):
@@ -15,9 +15,9 @@ class EstadoLoteMateriaPrima(ABC):
     # def avanzar(self):
     #     pass
 
-    # @abstractmethod
-    # def retroceder(self):
-    #     pass
+    @abstractmethod
+    def retroceder(self):
+        pass
 
     @abstractmethod
     def finalizaRegistroImagenes(self):
@@ -32,11 +32,11 @@ class EstadoLoteMateriaPrima(ABC):
         pass
 
     @abstractmethod
-    def registrarImagen(self, imagen):
+    def registrarImagen(self):
         return False
 
     @abstractmethod
-    def asignarResultado(self, resultado):
+    def asignarResultado(self):
         return False
 
     @abstractmethod
@@ -51,19 +51,43 @@ class Ingresado(EstadoLoteMateriaPrima):
     def __init__(self, lote_materia_prima, fecha_hora):
         super().__init__(lote_materia_prima, fecha_hora)
 
+    def infoBaseModificable(self):
+        return False
+
     def finalizaRegistroImagenes(self):
         self._lote_materia_prima.registrarEstado()
         self._lote_materia_prima.setEstado(EnAnalisis(self._lote_materia_prima, datetime.now()))
 
-    def registrarImagen(self, imagen):
+    def finalizaRegistroResultados(self):
+        pass
+
+    def registrarImagen(self):
         return True
+
+    def asignarResultado(self):
+        return False
 
     def infoBaseModificable(self):
         return True
 
+    def asignarALoteProduccion(self, lote):
+        pass
+
+    def malaCalidadImagenes(self):
+        pass
+
+    def retroceder(self):
+        pass
+
 class EnAnalisis(EstadoLoteMateriaPrima):
     def __init__(self, lote_materia_prima, fecha_hora):
         super().__init__(lote_materia_prima, fecha_hora)
+
+    def infoBaseModificable(self):
+        return False
+
+    def finalizaRegistroImagenes(self):
+        pass
 
     def finalizaRegistroResultados(self):
         self._lote_materia_prima.registrarEstado()
@@ -73,21 +97,72 @@ class EnAnalisis(EstadoLoteMateriaPrima):
         self._lote_materia_prima.registrarEstado()
         self._lote_materia_prima.setEstado(Ingresado(self._lote_materia_prima, datetime.now()))
 
-    def asignarResultado(self, resultado):
+    def asignarALoteProduccion(self, lote):
+        pass
+
+    def asignarResultado(self):
         return True
+
+    def registrarImagen(self):
+        return False
+
+    def retroceder(self):
+        pass
 
 class Analizado(EstadoLoteMateriaPrima):
     def __init__(self, lote_materia_prima, fecha_hora):
         super().__init__(lote_materia_prima, fecha_hora)
+
+    def infoBaseModificable(self):
+        return False
+
+    def finalizaRegistroImagenes(self):
+        pass
+
+    def finalizaRegistroResultados(self):
+        pass
+
+    def malaCalidadImagenes(self):
+        pass
 
     def asignarALoteProduccion(self, lote):
         lote.registrarLoteMateriaPrima(self._lote_materia_prima)
         self._lote_materia_prima.registrarEstado()
         self._lote_materia_prima.setEstado(EnProduccion(self._lote_materia_prima, datetime.now()))
 
+    def registrarImagen(self):
+        return False
+
+    def asignarResultado(self):
+        return False
+
+    def retroceder(self):
+        pass
+
 class EnProduccion(EstadoLoteMateriaPrima):
     def __init__(self, lote_materia_prima, fecha_hora):
         super().__init__(lote_materia_prima, fecha_hora)
+
+    def infoBaseModificable(self):
+        return False
+
+    def finalizaRegistroImagenes(self):
+        pass
+
+    def finalizaRegistroResultados(self):
+        pass
+
+    def malaCalidadImagenes(self):
+        pass
+
+    def registrarImagen(self):
+        return False
+
+    def asignarALoteProduccion(self, lote):
+        pass
+
+    def asignarResultado(self):
+        return False
 
     def retroceder(self, _fecha_hora):
         self._lote_materia_prima.registrarEstado()

@@ -12,6 +12,7 @@ class Producto(ABC):
         self.calidad = None # <<Calidad>>
 
     def _codeGen(self):
+        res = ""
         for i in range(20):
             res += str(random.randint(0, 9))
         return res
@@ -136,11 +137,11 @@ class Aceite(Producto):
 class Oliva(Producto):
     def __init__(self):
         super().__init__()
-        self.uniformidad_color = None # UniformidadColor
+        self.uniformidad_color = None # <<UniformidadColor>>
         self.tamano_promedio = None # float
         self.desvio_tamano = None # float
-        self.perfil_sabor = None # PerfilSabor
-        self.proceso_curado = None # ProcesoCurado
+        self.perfil_sabor = None # <<PerfilSabor>>
+        self.proceso_curado = None # <<ProcesoCurado>>
         self.contenido_sal = None # float
         self.porcentaje_defectos_visuales = None # float
         self.ph = None # float

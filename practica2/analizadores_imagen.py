@@ -115,7 +115,7 @@ class AnalizadorColor(AnalizadorImagen):
 
 
 
-class AnalizadorTamaño(AnalizadorImagen):
+class AnalizadorTamano(AnalizadorImagen):
     def __init__(self):
         super().__init__("Analizador de Tamaño")
 
