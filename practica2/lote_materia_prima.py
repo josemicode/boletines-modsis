@@ -32,6 +32,12 @@ class LoteMateriaPrima:
     def getCodigo(self):
         return self._codigo
 
+    def getPesoBruto(self):
+        return self._peso_bruto
+    
+    def getPesoTara(self):
+        return self._peso_tara
+
     # Setters
     def setPesoBruto(self, peso_bruto):
         if self._estado.infoBaseModificable():

@@ -6,8 +6,7 @@ class Productor:
         self._direccion = direccion
         self._telefono = telefono
         self._email = email
-     # Una pregunta jose, los atributos en python no eran "nombre" es publico, "_nombre" es protegido y "__nombre" es privado?
-     # No me eches mucha cuenta pero me suena de haberlo escuchado así
+
     # Getters
     def getNombre(self):
         return self._nombre
@@ -26,3 +25,6 @@ class Productor:
     
     def getEmail(self):
         return self._email
+    
+    def toString(self):
+        return f"{self._nombre} {self._apellidos} - ({self._nif})"

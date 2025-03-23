@@ -6,17 +6,45 @@ class Producto(ABC):
     def __init__(self):
         self.cantidad_producida = 0
         self.unidad_cantidad = ""
+        self.lugar_almacenaje = None # str
         self.codigo = self._codeGen()
+        self.calidad = None # <<Calidad>>
 
     def _codeGen(self):
         for i in range(20):
             res += str(random.randint(0, 9))
         return res
     
+    # Getters
+    def getCantidadProducida(self):
+        return self.cantidad_producida
+    
+    def getUnidadCantidad(self):
+        return self.unidad_cantidad
+    
+    def getLugarAlmacenaje(self):
+        return self.lugar_almacenaje
+    
+    def getCodigo(self):
+        return self.codigo
+
+    def setCantidadProducida(self, cantidad):
+        self.cantidad_producida = cantidad
+    
+    def setUnidadCantidad(self, unidad):
+        self.unidad_cantidad = unidad
+    
+    def setLugarAlmacenaje(self, lugar):
+        self.lugar_almacenaje = lugar
+    
     @abstractmethod
     def aceptarAnalizador(self, analizador):
         pass
     #? Puntaje calculado aqui? Ya veremos...
+
+    @abstractmethod
+    def calcularCalidad(self):
+        pass
 
 
 class Aceite(Producto):

@@ -27,3 +27,8 @@ class ProcessoCurado(Enum):
     SALMUERA = "Proceso de Curado en Salmuera"
     SOSA = "Proceso de Curado en Sosa Caustica"
     FERMETACION = "Proceso de Curado por Fermentacion"
+
+class Calidad(Enum):
+    ALTA = "Calidad Alta"
+    MEDIA = "Calidad Media"
+    BAJA = "Calidad Baja"

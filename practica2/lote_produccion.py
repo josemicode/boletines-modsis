@@ -1,7 +1,8 @@
 from estados_lote_produccion import EnArmado
 
 class LoteProduccion:
-    def __init__(self, fecha_hora):
+    def __init__(self, fecha_hora, num_lote):
+        self.num_lote = num_lote
         self.lotes_materia_prima = [] # list[LoteMateriaPrima]
         self.productos_obtenidos = [] # list[Producto]
         self._estado = EnArmado(self, fecha_hora) # EstadoLoteProduccion
@@ -9,6 +10,9 @@ class LoteProduccion:
         self.registrarEstado()
     
     # Getters
+    def getNumLote(self):
+        return self.num_lote
+
     def getLotesMateriaPrima(self):
         return self.lotes_materia_prima
     
