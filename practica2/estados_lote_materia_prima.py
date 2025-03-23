@@ -48,6 +48,9 @@ class EstadoLoteMateriaPrima(ABC):
         return False
 
 class Ingresado(EstadoLoteMateriaPrima):
+    def __init__(self, lote_materia_prima, fecha_hora):
+        super().__init__(lote_materia_prima, fecha_hora)
+
     def finalizaRegistroImagenes(self):
         self._lote_materia_prima.registrarEstado()
         self._lote_materia_prima.setEstado(EnAnalisis(self._lote_materia_prima, datetime.now()))
@@ -59,6 +62,9 @@ class Ingresado(EstadoLoteMateriaPrima):
         return True
 
 class EnAnalisis(EstadoLoteMateriaPrima):
+    def __init__(self, lote_materia_prima, fecha_hora):
+        super().__init__(lote_materia_prima, fecha_hora)
+
     def finalizaRegistroResultados(self):
         self._lote_materia_prima.registrarEstado()
         self._lote_materia_prima.setEstado(Analizado(self._lote_materia_prima, datetime.now()))
@@ -71,12 +77,18 @@ class EnAnalisis(EstadoLoteMateriaPrima):
         return True
 
 class Analizado(EstadoLoteMateriaPrima):
+    def __init__(self, lote_materia_prima, fecha_hora):
+        super().__init__(lote_materia_prima, fecha_hora)
+
     def asignarALoteProduccion(self, lote):
-        #* lote._nuevoLoteMateriaPrima(self._lote_materia_prima)
+        lote.registrarLoteMateriaPrima(self._lote_materia_prima)
         self._lote_materia_prima.registrarEstado()
         self._lote_materia_prima.setEstado(EnProduccion(self._lote_materia_prima, datetime.now()))
 
 class EnProduccion(EstadoLoteMateriaPrima):
+    def __init__(self, lote_materia_prima, fecha_hora):
+        super().__init__(lote_materia_prima, fecha_hora)
+
     def retroceder(self, _fecha_hora):
         self._lote_materia_prima.registrarEstado()
         self._lote_materia_prima.setEstado(Analizado(self._lote_materia_prima, _fecha_hora))

@@ -41,8 +41,8 @@ class LoteMateriaPrima:
         if self._estado.infoBaseModificable():
             self._peso_tara = peso_tara
 
-    def registrarEstado(self):
-        self.historial_estados.append(self._estado)
+    def setEstado(self, estado):
+        self._estado = estado
 
     # Code generation
     def _codeGen(self):
@@ -51,8 +51,8 @@ class LoteMateriaPrima:
         return res
 
     # State Methods
-    def setEstado(self, estado):
-        self._estado = estado
+    def registrarEstado(self):
+        self.historial_estados.append(self._estado)
 
     def finalizaRegistroImagenes(self):
         self._estado.finalizaRegistroImagenes()
