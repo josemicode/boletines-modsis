@@ -246,7 +246,7 @@ class Vote(object):
 
 class QuestionRetriever:
 
-    @classmethod
+    @classmethod #? code smelling me huele feo
     def create_social(cls):
         return cls._create_with_option("social")
 
@@ -272,7 +272,7 @@ class QuestionRetriever:
         self.option = an_option
 
     def retrieve_questions(self, questions, a_user):
-        q_ret = []
+        q_ret = [] #! Peligroso peligroso if elif
 
         if self.option == "social":
             following_col = []
