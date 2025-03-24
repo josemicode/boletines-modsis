@@ -156,7 +156,7 @@ class User(object):
         self.following = []
         self.votes = []
 
-    def add_topic(self, a_topic):
+    def add_topic(self, a_topic): #? code smelling sospechoso "a_vote"
         self.topics_of_interest.append(a_topic)
 
     def get_votes(self):
