@@ -8,7 +8,7 @@ class CuOOra:
 
     def add_question(self, a_question):
         self.questions.append(a_question)
-
+        #! se crea una variable temporal que solo se usa una vez, sobra la linea del medio en todas
     def get_social_questions_for_user(self, user):
         social_retriever = QuestionRetriever.create_social()
         return social_retriever.retrieve_questions(self.questions, user)
