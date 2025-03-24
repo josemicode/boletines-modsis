@@ -1,7 +1,7 @@
 
 from datetime import datetime
 
-class Answer(object):
+class Answer(object): 
     def __init__(self, question, user, description):
         self.votes = []
         self.timestamp = datetime.now()
@@ -18,11 +18,11 @@ class Answer(object):
         return r
 	
     def negative_votes(self):
-        r = []
+        r = [] #! code smelling: r = feo, hay que cambiarlo
         for vote in self.votes:
             if not vote.is_like():
-                r.append(vote)
-        return r
+                r.append(vote) #! code smelling: r = feo, hay que cambiarlo
+        return r #! code smelling: r = feo, hay que cambiarlo
 	
     def get_question(self):
         return self.question
@@ -39,7 +39,7 @@ class Answer(object):
     def get_timestamp(self):
         return self.timestamp
 
-    def add_vote(self, a_vote):
+    def add_vote(self, a_vote):                                     #? code smelling sospechoso "a_vote"
         if any(vote.user == a_vote.user for vote in self.votes):
             raise ValueError("Este usuario ya ha votado")
         self.votes.append(a_vote)
@@ -69,18 +69,18 @@ class Question:
         return self.description
 
     def positive_votes(self):
-        r = []
+        r = [] #! code smelling: r = feo, hay que cambiarlo
         for vote in self.votes:
             if vote.is_like():
-                r.append(vote)
-        return r
+                r.append(vote) #! code smelling: r = feo, hay que cambiarlo
+        return r #! code smelling: r = feo, hay que cambiarlo
 
     def negative_votes(self):
-        r = []
+        r = [] #! code smelling: r = feo, hay que cambiarlo
         for vote in self.votes:
             if not vote.is_like():
-                r.append(vote)
-        return r
+                r.append(vote) #! code smelling: r = feo, hay que cambiarlo
+        return r #! code smelling: r = feo, hay que cambiarlo
 
     def get_topics(self):
         return self.topics
@@ -100,13 +100,13 @@ class Question:
     def get_votes(self):
         return self.votes
 
-    def add_vote(self, a_vote):
-        if any(vote.user == a_vote.user for vote in self.votes):
+    def add_vote(self, a_vote): #? code smelling sospechoso "a_vote"
+        if any(vote.user == a_vote.user for vote in self.votes): 
             raise ValueError("Este usuario ya ha votado")
         self.votes.append(a_vote)
 
     def add_topic(self, a_topic):
-        if a_topic in self.topics: 
+        if a_topic in self.topics:  #? code smelling sospechoso "a_topic"
             raise ValueError("El tópico ya está agregado.")
         self.topics.append(a_topic)
         a_topic.add_question(self)
