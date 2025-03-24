@@ -17,7 +17,7 @@ class LoteMateriaPrima:
         self.imagenes = []
         self.resultados = []
         self.historial_estados = []
-        self._estado = Ingresado(self, llegada_planta)
+        self.setEstado(Ingresado(self, llegada_planta))
         self.registrarEstado()
 
     # Getters

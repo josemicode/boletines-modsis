@@ -51,9 +51,6 @@ class Ingresado(EstadoLoteMateriaPrima):
     def __init__(self, lote_materia_prima, fecha_hora):
         super().__init__(lote_materia_prima, fecha_hora)
 
-    def infoBaseModificable(self):
-        return False
-
     def finalizaRegistroImagenes(self):
         self._lote_materia_prima.registrarEstado()
         self._lote_materia_prima.setEstado(EnAnalisis(self._lote_materia_prima, datetime.now()))
