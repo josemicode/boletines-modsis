@@ -21,7 +21,7 @@ class Question:
     def get_description(self):
         return self.description
 
-    def positive_votes(self):
+    def positive_votes(self): 
         r = [] #! code smelling: r = feo, hay que cambiarlo
         for vote in self.votes:
             if vote.is_like():
