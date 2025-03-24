@@ -1,3 +1,6 @@
+
+from datetime import datetime
+
 class Answer(object): 
     def __init__(self, question, user, description):
         self.votes = []

@@ -1,3 +1,6 @@
+
+from datetime import datetime
+
 class Question:
     def __init__(self, user, title, description, topics=[]):
         self.timestamp = datetime.now()
