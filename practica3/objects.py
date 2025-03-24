@@ -81,7 +81,7 @@ class User(object):
         return score
 
 
-class Vote(object):
+class Vote(object): # Clase limpia
     
     def __init__(self, user, is_like=True):
         self.is_positive_vote = is_like
