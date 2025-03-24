@@ -1,7 +1,7 @@
 
 from datetime import datetime
 
-class QuestionRetriever:
+class QuestionRetriever: #! Hay que usar una herencia para quitar los 
 
     @classmethod
     def create_social(cls):
@@ -29,7 +29,7 @@ class QuestionRetriever:
         self.option = an_option
 
     def retrieve_questions(self, questions, a_user):
-        q_ret = []
+        q_ret = [] #! Nombre variable
 
         if self.option == "social":
             following_col = []
