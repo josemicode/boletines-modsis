@@ -16,29 +16,6 @@ class AnalizadorImagen(ABC):
     def analizarOliva(self, oliva):
         pass
 
-    #Es una prueba, así a bote pronto es como habría que hacerlo no??
-    #Tipo, lo que he hecho es copiar los ejemplos del enunciado
-    '''
-    Analizador de Madurez: analiza el estado de madurez de los frutos.
-    o Para Aceite: Nivel de maduración (0-100), porcentaje de ácido oleico, índice de
-    grasa.
-     {"tipo_analisis": "madurez", "nivel_madurez":
-    "integer (0-100)", "acido_oleico": "float (0.0-100.0)
-    [%]", "indice_grasa": "float (0.0-100.0) [%]" }
-    o Para Oliva de mesa: Nivel de maduración (verde, envero, negro), firmeza de la
-    piel.
-     {"tipo_analisis": "madurez", "estado_madurez":
-    "string ('verde' | 'envero' | 'negro')",
-    "firmeza_piel": "float (0.0-10.0) [N]" }
-    '''
-    #Sería tener estas clases, y luego en el Producto una clase abstracta, de aceptar o algo así, que redirija al analizador??
-    #una cosa así +-
-    '''
-    class Aceite(Producto):
-    def aceptarAnalizador(self, analizador):
-        return analizador.analizarAceite(self)
-    '''
-    
 
 class AnalizadorMadurez(AnalizadorImagen):
     def __init__(self):
@@ -56,11 +33,7 @@ class AnalizadorMadurez(AnalizadorImagen):
         d2 = DatoAnalisis("firmeza_piel", 6.5)
         return AnalisisImagen("madurez", [d1, d2])
 
-#? Cuestion: es realmente necesario pasar el objeto aceite/oliva a los métodos de analizarAceite/analizarOliva? Si despues hace falta usarlo lo entiendo, pero si no, no seria mejor no pasar nada?
 
-
-
-#Puede ser la vd, aunque voy a ponerlos todos, y si no simplemente es quitarlo rapido y fuera
 
 class AnalizadorDefectos(AnalizadorImagen):
     def __init__(self):
