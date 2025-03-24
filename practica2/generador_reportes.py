@@ -49,7 +49,10 @@ class GeneradorReportesJSON(GeneradorReportes):
         datos_materia_prima["fecha_cosecha"] = str(materia_prima.getFechaCosecha())
         datos_materia_prima["fecha_ingreso_planta"] = str(materia_prima.getLlegadaPlanta())
         datos_materia_prima["peso_neto"] = materia_prima.getPesoTara()
-        with open("reporte_materia_prima.json", "w", encoding="utf-8") as f:
+
+        nombre_ar = f"reporte_materia_prima_{materia_prima.getCodigo()}.json"
+
+        with open(nombre_ar, "w", encoding="utf-8") as f:
             json.dump(datos_materia_prima, f, indent=4, ensure_ascii=False)
         return datos_materia_prima
     
@@ -60,6 +63,9 @@ class GeneradorReportesJSON(GeneradorReportes):
         datos_producto["unidad_cantidad"] = producto.getUnidadCantidad()
         datos_producto["lugar_almacenaje"] = producto.getLugarAlmacenaje()
         datos_producto["calidad"] = producto.getCalidad().value
-        with open("reporte_producto.json", "w", encoding="utf-8") as f:
+
+        nombre_ar = f"reporte_producto_{producto.getCodigo()}.json"
+
+        with open(nombre_ar, "w", encoding="utf-8") as f:
             json.dump(datos_producto, f, indent=4, ensure_ascii=False)
         return datos_producto

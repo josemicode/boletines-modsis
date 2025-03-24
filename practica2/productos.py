@@ -66,14 +66,14 @@ class Producto(ABC):
 class Aceite(Producto):
     def __init__(self):
         super().__init__()
-        self.estrategia_tipo_aceite = None # EstrategiaTipoAceite
+        self.estrategia_tipo_aceite = None # <<EstrategiaTipoAceite>>
         self.metodo_extraccion = None # <<MetodoExtraccion>>
         self.acidez = None # float
         self.cantidad_polifenoles = None # int
         self.color = None # str
         self.defectos_sensoriales = [] # List[DefectoSensorial]
         self.perfil_frutado = None # str
-        self.nivel_frutado = None # NivelFrutado
+        self.nivel_frutado = None # <<NivelFrutado>>
         self.resistencia_termica = None # <<ResistenciaTermica>>
     
     # Setters
