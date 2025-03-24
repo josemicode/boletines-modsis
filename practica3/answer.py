@@ -11,11 +11,11 @@ class Answer(object):
         self.question.add_answer(self)
 
     def positive_votes(self):
-        r = []
+        r = []#! code smelling: r = feo, hay que cambiarlo
         for vote in self.votes:
             if vote.is_like():
-                r.append(vote)
-        return r
+                r.append(vote)#! code smelling: r = feo, hay que cambiarlo
+        return r#! code smelling: r = feo, hay que cambiarlo
 	
     def negative_votes(self):
         r = [] #! code smelling: r = feo, hay que cambiarlo
