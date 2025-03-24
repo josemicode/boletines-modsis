@@ -16,6 +16,8 @@ class AnalizadorImagen(ABC):
     def analizarOliva(self, oliva):
         pass
 
+# Aclaracion: los metodos analizarAceite() y analizarOliva(), reciben los objetos aceite y oliva correspondiente a cada uno,
+# en la implementacion actual no hace nada, tendría un uso en el caso de que esta funcionalidad tuviese una funcion real.
 
 class AnalizadorMadurez(AnalizadorImagen):
     def __init__(self):
