@@ -1,7 +1,7 @@
 
 from datetime import datetime
 
-class QuestionRetriever: #! Hay que usar una herencia para quitar los 
+class QuestionRetriever: #! Hay que usar una herencia para quitar los if elif
 
     @classmethod
     def create_social(cls):
@@ -35,7 +35,7 @@ class QuestionRetriever: #! Hay que usar una herencia para quitar los
             following_col = []
             for follow in a_user.following:
                 following_col.extend(follow.questions)
-            temp = sorted(following_col, key=lambda q: len(q.positive_votes()))
+            temp = sorted(following_col, key=lambda q: len(q.positive_votes())) #! q que es 
             q_ret = temp[-min(100, len(temp)):]
 
         elif self.option == "topics":
@@ -54,7 +54,7 @@ class QuestionRetriever: #! Hay que usar una herencia para quitar los
             q_ret = temp[-min(100, len(temp)):]
 
         elif self.option == "popularToday":
-            today_questions = [q for q in questions if q.timestamp.date() == datetime.today().date()]
+            today_questions = [q for q in questions if q.timestamp.date() == datetime.today().date()] #! nanai
             if today_questions:
                 average_votes = sum(len(q.positive_votes()) for q in today_questions) / len(today_questions)
                 popular_questions = []
@@ -64,4 +64,4 @@ class QuestionRetriever: #! Hay que usar una herencia para quitar los
                 temp = sorted(popular_questions, key=lambda q: len(q.positive_votes()))
                 q_ret = temp[-min(100, len(temp)):]
 
-        return [q for q in q_ret if q.user != a_user]
+        return [q for q in q_ret if q.user != a_user] #! nanai
