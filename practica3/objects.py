@@ -80,7 +80,7 @@ class User(object):
 
         return score
 
-
+#* De chill, nada que cambiar
 class Vote(object): # Clase limpia
     
     def __init__(self, user, is_like=True):
