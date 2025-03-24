@@ -71,7 +71,7 @@ class User(object):
             if pv > nv:
                 score += 10
 
-        # Sumar puntos por respuestas con más votos positivos que negativos
+        #* Sumar puntos por respuestas con más votos positivos que negativos
         for answer in self.answers: #* pv -> positive//// nv -> negative
             pv = len(answer.positive_votes())
             nv = len(answer.negative_votes())
@@ -81,7 +81,7 @@ class User(object):
         return score
 
 #* De chill, nada que cambiar
-class Vote(object): # Clase limpia
+class Vote(object): #* Clase limpia
     
     def __init__(self, user, is_like=True):
         self.is_positive_vote = is_like
