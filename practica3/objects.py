@@ -19,7 +19,7 @@ class User(object):
         return self.votes
 
     def questions_of_interest(self):
-        return self.question_retriever.retrieve_questions(self)
+        return self.question_retriever.retrieve_questions(self) #! Feature ENVY
 
     def get_question_retriever(self):
         return self.question_retriever
@@ -52,7 +52,7 @@ class User(object):
         return self.password
 
     def add_answer(self, an_answer):
-        self.answers.append(an_answer)
+        self.answers.append(an_answer) 
 
     def get_topics_of_interest(self):
         return self.topics_of_interest
