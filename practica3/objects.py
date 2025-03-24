@@ -72,7 +72,7 @@ class User(object):
                 score += 10
 
         # Sumar puntos por respuestas con más votos positivos que negativos
-        for answer in self.answers:
+        for answer in self.answers: #* pv -> positive//// nv -> negative
             pv = len(answer.positive_votes())
             nv = len(answer.negative_votes())
             if pv > nv:
