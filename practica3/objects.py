@@ -18,8 +18,8 @@ class User(object):
     def get_votes(self):
         return self.votes
 
-    def questions_of_interest(self):
-        return self.question_retriever.retrieve_questions(self) #! Feature ENVY
+    #def questions_of_interest(self):
+    #    return self.question_retriever.retrieve_questions(self) #! Feature ENVY, lo podemos delegar a question_retriever
 
     def get_question_retriever(self):
         return self.question_retriever
@@ -63,7 +63,7 @@ class User(object):
     def set_username(self, an_object):
         self.username = an_object
 
-    def calculate_score(self):
+    def calculate_score(self): #Se podría refactorizar???
         score = 0
         for question in self.questions:
             pv = len(question.positive_votes())

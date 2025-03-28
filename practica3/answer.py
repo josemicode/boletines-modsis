@@ -10,6 +10,20 @@ class Answer(object):
         self.question = question
         self.question.add_answer(self)
 
+    # SE podría hacer un extrac method de esta forma???
+    '''
+    def _filter_votes(self, positive: bool):
+        """Filtra los votos en función de si son positivos o negativos."""
+        return [vote for vote in self.votes if vote.is_like() == positive]
+
+    def positive_votes(self):
+        return self._filter_votes(True)
+    
+    def negative_votes(self):
+        return self._filter_votes(False)
+    
+    '''
+
     def positive_votes(self):
         r = []#! code smelling: r = feo, hay que cambiarlo
         for vote in self.votes:

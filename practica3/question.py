@@ -21,6 +21,7 @@ class Question:
     def get_description(self):
         return self.description
 
+#Extraction method como en la clase answe
     def positive_votes(self): 
         r = [] #! code smelling: r = feo, hay que cambiarlo
         for vote in self.votes:
