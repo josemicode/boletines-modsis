@@ -1,13 +1,7 @@
 import unittest
 from unittest.mock import patch
 from datetime import datetime, timedelta
-# from cuoora_social_network import Answer, User, Question, QuestionRetriever, Vote, CuOOra, Topic
-from answer import Answer
-from objects import Vote, User
-from question import Question
-from question_retriever import QuestionRetriever
-from cuoora_social_network import CuOOra
-from topic import Topic
+from cuoora_social_network import Answer, User, Question, QuestionRetriever, Vote, CuOOra, Topic
 
 class AnswerTest(unittest.TestCase):
     def setUp(self):
