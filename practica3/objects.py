@@ -79,6 +79,15 @@ class User(object):
                 score += 20
 
         return score
+    
+    
+    '''
+    #Lo había hecho de otra manera, pero al comprobarlo chatgpt me dice que así en un oneliner está mas legible 
+    def calculate_score(self):
+        question_score = sum(10 for q in self.questions if len(q.positive_votes()) > len(q.negative_votes()))
+        answer_score = sum(20 for a in self.answers if len(a.positive_votes()) > len(a.negative_votes()))
+        return question_score + answer_score
+    '''
 
 #* De chill, nada que cambiar
 class Vote(object): #* Clase limpia
