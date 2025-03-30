@@ -37,7 +37,7 @@ class Answer(object):
             if not vote.is_like():
                 r.append(vote) #! code smelling: r = feo, hay que cambiarlo
         return r #! code smelling: r = feo, hay que cambiarlo
-	
+    
     def get_question(self):
         return self.question
 		
