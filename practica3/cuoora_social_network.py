@@ -1,5 +1,5 @@
 from datetime import datetime
-from abc import ABC, abstractclassmethod
+from abc import ABC, abstractmethod
 
 class CuOOra:
     def __init__(self):
@@ -36,7 +36,7 @@ class CuOOra:
     #================================#
     
 class QuestionRetrievalStrategy(ABC):
-    @abstractclassmethod
+    @abstractmethod
     def retrieve_questions(self, questions, a_user):
         pass
 
