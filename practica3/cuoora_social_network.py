@@ -196,11 +196,11 @@ class User(object):
     def get_topics_of_interest(self):
         return self.topics_of_interest
 
-    def set_password(self, an_object):
-        self.password = an_object
+    def set_password(self, password):
+        self.password = password
 
-    def set_username(self, an_object):
-        self.username = an_object
+    def set_username(self, username):
+        self.username = username
 
     def calculate_score(self):
         question_score = sum(10 for q in self.questions if len(q.positive_votes()) > len(q.negative_votes()))
@@ -244,8 +244,8 @@ class Question:
         for topic in topics:
             self.add_topic(topic)
 
-    def set_description(self, an_object):
-        self.description = an_object
+    def set_description(self, description):
+        self.description = description
 
     def get_description(self):
         return self.description
@@ -312,14 +312,14 @@ class Topic:
     def get_description(self):
         return self.description
 
-    def set_description(self, an_object):
-        self.description = an_object
+    def set_description(self, description):
+        self.description = description
 
     def get_name(self):
         return self.name
 
-    def set_name(self, an_object):
-        self.name = an_object
+    def set_name(self, name):
+        self.name = name
 
     def get_questions(self):
         return self.questions
